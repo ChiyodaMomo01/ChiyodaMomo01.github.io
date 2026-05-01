@@ -19,7 +19,7 @@ export const profile = {
   email: "srq24@mails.tsinghua.edu.cn",
   github: "https://github.com/ChiyodaMomo01",
   scholar: "https://scholar.google.com/citations?user=WKBB3r0AAAAJ&hl=zh-CN",
-  scholarStatus: "Citation count requires manual confirmation; automated Google Scholar access returned 403.",
+  scholarStatus: "Google Scholar citations: 103 · h-index: 5 · i10-index: 4",
   neuralPom: "https://neural-pom.vercel.app/",
 };
 
