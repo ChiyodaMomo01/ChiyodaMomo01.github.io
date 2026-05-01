@@ -33,7 +33,10 @@ function App() {
         <section className="hero section-shell" id="about">
           <div className="hero-copy">
             <p className="eyebrow">AI for Earth System Science</p>
-            <h1>{profile.name}</h1>
+            <h1>
+              {profile.name}
+              <span>{profile.chineseName}</span>
+            </h1>
             <p className="hero-title">{profile.title}</p>
             <p className="hero-text">
               I am a PhD student in the Department of Earth System Science at Tsinghua University and a research intern at the
@@ -60,21 +63,21 @@ function App() {
               </a>
             </div>
           </div>
-          <aside className="hero-panel" aria-label="Research highlight">
-            <div className="orbital-mark">
-              <span />
-              <span />
-              <span />
+          <aside className="hero-side" aria-label="Portrait and research highlight">
+            <div className="portrait-card">
+              <img src={profile.photo} alt="Portrait of Ruiqi Shu" />
             </div>
-            <p className="panel-label">Current focus</p>
-            <h2>Differentiable ocean modeling with machine learning</h2>
-            <p>
-              I am actively recruiting and looking for collaborators interested in coupling a full differentiable ocean numerical
-              model with machine learning.
-            </p>
-            <a href={profile.neuralPom} className="text-link">
-              Explore Neural-POM <ArrowUpRight size={16} />
-            </a>
+            <div className="hero-panel">
+              <p className="panel-label">Current focus</p>
+              <h2>Differentiable ocean modeling with machine learning</h2>
+              <p>
+                I am actively recruiting and looking for collaborators interested in coupling a full differentiable ocean
+                numerical model with machine learning.
+              </p>
+              <a href={profile.neuralPom} className="text-link">
+                Explore Neural-POM <ArrowUpRight size={16} />
+              </a>
+            </div>
           </aside>
         </section>
 

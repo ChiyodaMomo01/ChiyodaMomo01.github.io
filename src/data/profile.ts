@@ -13,6 +13,7 @@ export type TimelineItem = {
 
 export const profile = {
   name: "Ruiqi Shu",
+  chineseName: "舒睿骐",
   title: "PhD Candidate · AI for Earth System Science",
   affiliation: "Department of Earth System Science, Tsinghua University",
   location: "Beijing, China",
@@ -21,6 +22,7 @@ export const profile = {
   scholar: "https://scholar.google.com/citations?user=WKBB3r0AAAAJ&hl=zh-CN",
   scholarStatus: "Google Scholar citations: 103 · h-index: 5 · i10-index: 4",
   neuralPom: "https://neural-pom.vercel.app/",
+  photo: "/images/ruiqi-shu.jpg",
 };
 
 export const navItems = [
