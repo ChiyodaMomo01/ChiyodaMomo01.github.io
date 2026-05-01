@@ -10,8 +10,6 @@ export type Publication = {
   imageStatus?: string;
 };
 
-const placeholder = "Representative figure pending manual extraction";
-
 export const publications: Publication[] = [
   {
     title: "HybridOM: Hybrid Physics-Based and Data-Driven Global Ocean Modeling with Efficient Spatial Downscaling",
@@ -21,7 +19,7 @@ export const publications: Publication[] = [
     role: "First author",
     summary: "A hybrid physics-based and data-driven framework for global ocean modeling with efficient spatial downscaling.",
     links: [{ label: "arXiv", url: "https://arxiv.org/abs/2602.00598" }],
-    imageStatus: placeholder,
+    image: "/images/publications/hybridom.png",
   },
   {
     title: "NeuralOM: Neural Ocean Model for Subseasonal-to-Seasonal Simulation",
@@ -36,7 +34,7 @@ export const publications: Publication[] = [
       { label: "arXiv", url: "https://arxiv.org/abs/2505.21020" },
       { label: "Code", url: "https://github.com/YuanGao-YG/NeuralOM" },
     ],
-    imageStatus: placeholder,
+    image: "/images/publications/neuralom.png",
   },
   {
     title: "Advancing Ocean State Estimation with efficient and scalable AI",
@@ -46,7 +44,7 @@ export const publications: Publication[] = [
     role: "Co-author",
     summary: "An AI-driven ocean data assimilation framework for efficient, scalable, high-resolution ocean state estimation.",
     links: [{ label: "arXiv", url: "https://arxiv.org/abs/2511.06041" }],
-    imageStatus: placeholder,
+    image: "/images/publications/advancing-ocean-state-estimation.png",
   },
   {
     title: "An Exterior-Embedding Neural Operator Framework for Preserving Conservation Laws",
@@ -56,7 +54,7 @@ export const publications: Publication[] = [
     role: "Co-author",
     summary: "A neural operator framework designed to preserve conservation laws through exterior embedding.",
     links: [{ label: "arXiv", url: "https://arxiv.org/abs/2511.16573" }],
-    imageStatus: placeholder,
+    image: "/images/publications/exterior-embedding-neural-operator.png",
   },
   {
     title: "Cracking the Code of Arctic Sea Ice: Why Models Fail to Predict Its Retreat?",
@@ -66,7 +64,7 @@ export const publications: Publication[] = [
     role: "Co-author",
     summary: "An analysis of why current models struggle to predict Arctic sea-ice retreat.",
     links: [{ label: "arXiv", url: "https://arxiv.org/abs/2511.04961" }],
-    imageStatus: placeholder,
+    image: "/images/publications/cracking-the-code.png",
   },
   {
     title: "OneForecast: A Universal Framework for Global and Regional Weather Forecasting",
@@ -82,7 +80,7 @@ export const publications: Publication[] = [
       { label: "arXiv", url: "https://arxiv.org/abs/2502.00338" },
       { label: "Code", url: "https://github.com/YuanGao-YG/OneForecast" },
     ],
-    imageStatus: placeholder,
+    image: "/images/publications/oneforecast.png",
   },
   {
     title: "Advanced long-term earth system forecasting by learning the small-scale nature",
@@ -93,7 +91,7 @@ export const publications: Publication[] = [
     role: "Co-first author",
     summary: "Long-term Earth system forecasting by representing small-scale dynamics in data-driven models.",
     links: [{ label: "arXiv", url: "https://arxiv.org/abs/2505.19432" }],
-    imageStatus: placeholder,
+    image: "/images/publications/advanced-long-term-earth-system-forecasting.png",
   },
   {
     title: "Turb-L1: Achieving Long-term Turbulence Tracing By Tackling Spectral Bias",
@@ -103,7 +101,7 @@ export const publications: Publication[] = [
     role: "Co-first author",
     summary: "A long-term turbulence tracing method designed to reduce spectral bias.",
     links: [{ label: "arXiv", url: "https://arxiv.org/abs/2505.19038" }],
-    imageStatus: placeholder,
+    image: "/images/publications/turb-l1.png",
   },
   {
     title: "Advanced forecasts of global extreme marine heatwaves through a physics-guided data-driven approach",
@@ -116,7 +114,7 @@ export const publications: Publication[] = [
       { label: "DOI", url: "https://doi.org/10.1088/1748-9326/adbddd" },
       { label: "arXiv", url: "https://arxiv.org/abs/2412.15532" },
     ],
-    imageStatus: placeholder,
+    image: "/images/publications/advanced-marine-heatwaves.jpg",
   },
   {
     title: "BeamVQ: Beam Search with Vector Quantization to Mitigate Data Scarcity in Physical Spatiotemporal Forecasting",
@@ -127,7 +125,7 @@ export const publications: Publication[] = [
     role: "Co-author",
     summary: "A data augmentation approach for physical spatiotemporal forecasting under data scarcity.",
     links: [{ label: "arXiv", url: "https://arxiv.org/abs/2502.18925" }],
-    imageStatus: placeholder,
+    image: "/images/publications/beamvq.png",
   },
   {
     title: "Ocean-E2E: Hybrid Physics-Based and Data-Driven Global Forecasting of Extreme Marine Heatwaves with End-to-End Neural Assimilation",
@@ -137,7 +135,7 @@ export const publications: Publication[] = [
     role: "Co-first author",
     summary: "Hybrid physics-based and data-driven forecasting of extreme marine heatwaves with end-to-end neural assimilation.",
     links: [{ label: "arXiv", url: "https://arxiv.org/abs/2505.22071" }],
-    imageStatus: placeholder,
+    image: "/images/publications/ocean-e2e.png",
   },
   {
     title: "Impact of Downwelling-Favorable Winds on Eddy Formation in the West Greenland Current",
@@ -147,51 +145,6 @@ export const publications: Publication[] = [
     role: "First author",
     summary: "A study of subarctic ocean dynamics and wind-driven eddy formation in the West Greenland Current.",
     links: [{ label: "DOI", url: "https://doi.org/10.1175/JPO-D-24-0053.1" }],
-    imageStatus: placeholder,
-  },
-  {
-    title: "Adaptive Universal Network for Ocean Vertical Velocity Reconstruction",
-    authors: "Yuan Gao, Wei Xiong, Hao Wu, Ruiqi Shu, Xiaomeng Huang",
-    venue: "AGU Fall Meeting Abstracts 2024, OS31C-0615",
-    date: "2024",
-    role: "Co-author",
-    summary: "An AGU abstract on AI-based ocean vertical velocity reconstruction.",
-    links: [
-      {
-        label: "Scholar",
-        url: "https://scholar.google.com/scholar?q=Adaptive+Universal+Network+for+Ocean+Vertical+Velocity+Reconstruction",
-      },
-    ],
-    imageStatus: "Conference abstract; representative figure pending",
-  },
-  {
-    title: "A Scale-Aware Framework for Regional to Global Marine Heatwaves Forecast",
-    authors: "Ruiqi Shu, Wei Xiong, Hao Wu, Yuan Gao, Ruijian Gou, Xiaomeng Huang",
-    venue: "AGU Fall Meeting Abstracts 2024, OS31C-0613",
-    date: "2024",
-    role: "First author",
-    summary: "An AGU abstract on scale-aware regional-to-global marine heatwave forecasting.",
-    links: [
-      {
-        label: "Scholar",
-        url: "https://scholar.google.com/scholar?q=A+Scale-Aware+Framework+for+Regional+to+Global+Marine+Heatwaves+Forecast",
-      },
-    ],
-    imageStatus: "Conference abstract; representative figure pending",
-  },
-  {
-    title: "Ocean-E2E: Hybrid Physics-Based and Data-Driven Global Forecasting of Marine Heatwaves with End-to-End Neural Assimilation",
-    authors: "Ruiqi Shu, Ruijian Gou, Yanfei Xiang, Xiaomeng Huang",
-    venue: "Manuscript listed on Google Scholar",
-    date: "2025",
-    role: "First author",
-    summary: "A Scholar-listed earlier manuscript entry on end-to-end neural assimilation for marine heatwave forecasting.",
-    links: [
-      {
-        label: "Scholar",
-        url: "https://scholar.google.com/scholar?q=Ocean-E2E+Hybrid+Physics-Based+and+Data-Driven+Global+Forecasting+of+Marine+Heatwaves+with+End-to-End+Neural+Assimilation",
-      },
-    ],
-    imageStatus: "Earlier Scholar entry; public manuscript link pending",
+    image: "/images/publications/impact-downwelling.jpg",
   },
 ];

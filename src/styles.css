@@ -195,16 +195,16 @@ h1 span {
 }
 
 .portrait-card {
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 4 / 4.15;
   background: rgba(255, 255, 255, 0.75);
 }
 
 .portrait-card img {
   display: block;
   width: 100%;
-  height: 100%;
+  height: 134%;
   object-fit: cover;
-  object-position: 50% 35%;
+  object-position: 50% 0%;
 }
 
 .hero-panel {
@@ -329,7 +329,7 @@ time {
   display: grid;
   place-items: center;
   min-height: 14rem;
-  padding: 1rem;
+  padding: 0;
   background:
     linear-gradient(135deg, rgba(13, 127, 131, 0.18), rgba(45, 95, 184, 0.13)),
     linear-gradient(0deg, transparent 24px, rgba(255, 255, 255, 0.42) 25px),
@@ -338,6 +338,16 @@ time {
   color: var(--deep);
   text-align: center;
   font-weight: 800;
+}
+
+.paper-figure img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 14rem;
+  object-fit: contain;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.72);
 }
 
 .paper-body {
@@ -375,6 +385,10 @@ time {
   font-size: 0.95rem;
 }
 
+.paper-summary {
+  font-style: italic;
+}
+
 .paper-links {
   margin-top: 0.95rem;
 }
@@ -402,6 +416,48 @@ time {
   background: rgba(13, 127, 131, 0.12);
 }
 
+.misc-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 0.42fr);
+  gap: 1rem;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 1.2rem;
+  background: var(--paper);
+  box-shadow: 0 16px 45px rgba(32, 58, 54, 0.08);
+}
+
+.misc-card h3 {
+  margin-bottom: 0.55rem;
+  color: var(--ink);
+}
+
+.misc-card p {
+  margin-bottom: 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.misc-card a {
+  color: var(--teal);
+  font-weight: 800;
+}
+
+.bike-preview {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.bike-preview img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
 footer {
   padding: 3rem 1rem;
   color: var(--muted);
@@ -420,6 +476,7 @@ footer {
   .hero,
   .publication-card,
   .service-grid,
+  .misc-card,
   .metrics-band {
     grid-template-columns: 1fr;
   }

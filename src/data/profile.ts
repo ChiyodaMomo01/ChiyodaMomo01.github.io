@@ -32,6 +32,7 @@ export const navItems = [
   ["Awards", "awards"],
   ["Experience", "experience"],
   ["Service", "service"],
+  ["Miscellaneous", "miscellaneous"],
 ] as const;
 
 export const news: NewsItem[] = [
@@ -43,17 +44,17 @@ export const news: NewsItem[] = [
   {
     date: "Dec 2025",
     label: "AAAI 2026",
-    text: "Co-authored paper accepted to AAAI 2026. Congratulations to the NeuralOM team.",
+    text: "Co-authored paper accepted to AAAI 2026. Congratulations to all collaborators.",
   },
   {
     date: "May 2025",
     label: "ICML 2025",
-    text: "Co-first-author work OneForecast accepted as an ICML 2025 poster.",
+    text: "Co-first-author work OneForecast accepted as an ICML 2025 poster. Congratulations to all collaborators.",
   },
   {
     date: "Mar 2025",
     label: "ERL",
-    text: "First-author paper accepted by Environmental Research Letters.",
+    text: "First-author paper accepted by Environmental Research Letters. Congratulations to all collaborators.",
   },
   {
     date: "Dec 2024",
@@ -73,30 +74,6 @@ export const awards: TimelineItem[] = [
     title: "National Scholarship",
     place: "Ministry of Education of the PRC",
     detail: "National-level scholarship awarded in China.",
-  },
-  {
-    date: "2021-2023",
-    title: "First-class Scholarship",
-    place: "Ocean University of China",
-    detail: "Repeated annual First-class Scholarship recipient.",
-  },
-  {
-    date: "2021-2023",
-    title: "Excellent Student",
-    place: "Ocean University of China",
-    detail: "Repeated annual Excellent Student recognition.",
-  },
-  {
-    date: "2021-2023",
-    title: "First-class Scholarship of Top Student",
-    place: "Chongben Honors College, OUC",
-    detail: "Honors college scholarship for top students.",
-  },
-  {
-    date: "2023",
-    title: "Honorable Mention",
-    place: "Mathematical Contest in Modeling",
-    detail: "International mathematical modeling competition.",
   },
   {
     date: "2023",
@@ -142,4 +119,9 @@ export const experience: TimelineItem[] = [
 export const services = {
   reviewer: ["ICLR", "KDD", "ICML"],
   areas: ["AI4Science", "AI4PDE", "Geophysical Fluid Dynamics", "AI for Earth System Science"],
+};
+
+export const miscellaneous = {
+  text: "I am also a road cycling enthusiast.",
+  bikeImage: "/images/miscellaneous/road-bike.png",
 };

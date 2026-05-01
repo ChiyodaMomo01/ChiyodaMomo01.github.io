@@ -8,9 +8,10 @@ import {
   MapPin,
   Microscope,
   Newspaper,
+  Bike,
   Sparkles,
 } from "lucide-react";
-import { awards, experience, navItems, news, profile, services } from "./data/profile";
+import { awards, experience, miscellaneous, navItems, news, profile, services } from "./data/profile";
 import { publications } from "./data/publications";
 
 function App() {
@@ -115,7 +116,7 @@ function App() {
             {publications.map((paper) => (
               <article className="publication-card" key={paper.title}>
                 <div className="paper-figure">
-                  <span>{paper.imageStatus ?? "Figure pending"}</span>
+                  {paper.image ? <img src={paper.image} alt={`${paper.title} representative figure`} /> : <span>{paper.imageStatus ?? "Figure pending"}</span>}
                 </div>
                 <div className="paper-body">
                   <div className="paper-meta">
@@ -125,7 +126,7 @@ function App() {
                   </div>
                   <h3>{paper.title}</h3>
                   <p className="authors">{paper.authors}</p>
-                  <p>{paper.summary}</p>
+                  <p className="paper-summary">{paper.summary}</p>
                   {paper.links.length > 0 && (
                     <div className="paper-links">
                       {paper.links.map((link) => (
@@ -172,6 +173,24 @@ function App() {
                 ))}
               </div>
             </div>
+          </div>
+        </Section>
+
+        <Section id="miscellaneous" label="Miscellaneous" icon={<Bike size={22} />}>
+          <div className="misc-card">
+            <div>
+              <h3>Road Cycling</h3>
+              <p>
+                {miscellaneous.text} Click here to{" "}
+                <a href={miscellaneous.bikeImage} target="_blank" rel="noreferrer">
+                  view my road bike
+                </a>
+                .
+              </p>
+            </div>
+            <a className="bike-preview" href={miscellaneous.bikeImage} target="_blank" rel="noreferrer" aria-label="View my road bike">
+              <img src={miscellaneous.bikeImage} alt="Ruiqi Shu's road bike" />
+            </a>
           </div>
         </Section>
       </main>
