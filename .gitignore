@@ -4,6 +4,12 @@ dist/
 **/.DS_Store
 *.local
 *.tsbuildinfo
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.xdv
 vite.config.js
 vite.config.d.ts
 task/

@@ -1,0 +1,221 @@
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[a4paper,margin=1.52cm,top=1.45cm,bottom=1.55cm]{geometry}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\usepackage{xcolor}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+\usepackage{ragged2e}
+
+\setmainfont{Times New Roman}
+\setsansfont{Arial}
+\setCJKmainfont{PingFang SC}
+\setCJKsansfont{PingFang SC}
+
+\definecolor{accent}{HTML}{0B5D5A}
+\definecolor{textgray}{HTML}{444C4A}
+\definecolor{lightline}{HTML}{D9E4E1}
+
+\hypersetup{
+  colorlinks=true,
+  urlcolor=accent,
+  linkcolor=accent
+}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlist[itemize]{leftmargin=1.15em,itemsep=2pt,topsep=2pt,parsep=0pt}
+\setlist[enumerate]{leftmargin=1.55em,itemsep=5pt,topsep=3pt,parsep=0pt}
+
+\titleformat{\section}
+  {\large\bfseries\color{accent}\sffamily}
+  {}
+  {0pt}
+  {}
+  [\vspace{-0.35em}\color{lightline}\titlerule]
+\titlespacing*{\section}{0pt}{0.95em}{0.55em}
+
+\newcommand{\cvname}[1]{{\fontsize{28}{32}\selectfont\bfseries #1}}
+\newcommand{\cvsubtitle}[1]{{\large\color{textgray} #1}}
+\newcommand{\contactsep}{\quad{\color{lightline}\textbar}\quad}
+\newcommand{\entry}[4]{%
+  \begin{tabularx}{\textwidth}{@{}Xr@{}}
+    \textbf{#1} & {\color{textgray}#2}\\
+    {\color{textgray}#3} & {\color{textgray}#4}
+  \end{tabularx}\vspace{2pt}
+}
+\newcommand{\pubentry}[5]{%
+  \item \textbf{#1}\\
+  #2\\
+  \textit{#3}. {\color{accent}\textbf{#4}} #5
+}
+\newcommand{\role}[1]{\MakeUppercase{#1}.}
+
+\begin{document}
+
+\begin{center}
+  \cvname{Ruiqi Shu (舒睿骐)}\\[3pt]
+  \cvsubtitle{PhD Candidate, Department of Earth System Science, Tsinghua University}\\[7pt]
+  \small
+  Beijing, China
+  \contactsep
+  \href{mailto:srq24@mails.tsinghua.edu.cn}{srq24@mails.tsinghua.edu.cn}
+  \contactsep
+  \href{https://github.com/ChiyodaMomo01}{GitHub: ChiyodaMomo01}\\[3pt]
+  \href{https://scholar.google.com/citations?user=WKBB3r0AAAAJ&hl=zh-CN}{Google Scholar}
+  \contactsep
+  \href{https://chiyodamomo01.github.io/}{chiyodamomo01.github.io}
+  \contactsep
+  \href{https://neural-pom.vercel.app/}{Neural-POM}
+\end{center}
+
+\vspace{0.25em}
+
+\section*{Research Interests}
+AI for Earth system science; AI for Science; differentiable geophysical and ocean solvers; neural--physics hybrid modeling; spatiotemporal prediction; geophysical fluid dynamics; marine heatwave forecasting; ocean state estimation. I am particularly interested in transforming traditional atmospheric and oceanic numerical solvers into differentiable systems and coupling them deeply with neural networks. I am also developing Neural-POM, a project that combines a full differentiable ocean numerical model with machine learning.
+
+\section*{Education}
+\entry{Tsinghua University}{Beijing, China}{PhD Candidate in Atmospheric Science, Department of Earth System Science}{Sep. 2024 -- Present}
+\begin{itemize}
+  \item Advisor: Prof. Xiaomeng Huang.
+  \item Research focus: AI for Earth system science, differentiable ocean modeling, and neural--physics forecasting systems.
+\end{itemize}
+
+\entry{Ocean University of China}{Qingdao, China}{BSc in Marine Science (Oceanography), Chongben Honors College}{Sep. 2020 -- Jun. 2024}
+\begin{itemize}
+  \item Undergraduate training in oceanography, geophysical fluid dynamics, and mathematical modeling.
+\end{itemize}
+
+\section*{Research Experience}
+\entry{Shanghai Academy of AI for Science}{Shanghai, China}{Research Intern}{Nov. 2025 -- Present}
+\begin{itemize}
+  \item Conduct research on AI for Science and neural--physics modeling for complex Earth system and ocean dynamics.
+\end{itemize}
+
+\entry{Tsinghua University}{Beijing, China}{Graduate Researcher, Department of Earth System Science}{Sep. 2024 -- Present}
+\begin{itemize}
+  \item Develop machine-learning methods that integrate physical constraints, differentiable numerical solvers, and data-driven forecasting.
+  \item Work on hybrid ocean and atmosphere models for long-range simulation, marine heatwave forecasting, and data assimilation.
+\end{itemize}
+
+\section*{Publications}
+\small
+\begin{enumerate}[label={[\arabic*]},leftmargin=1.8em]
+  \pubentry
+    {HybridOM: Hybrid Physics-Based and Data-Driven Global Ocean Modeling with Efficient Spatial Downscaling}
+    {\textbf{Ruiqi Shu}, Xiaohui Zhong, Qiusheng Huang, Ruijian Gou, Tianrun Gao, Hao Li, Xiaomeng Huang}
+    {arXiv preprint arXiv:2602.00598, 2026}
+    {\role{First author}}
+    {\href{https://arxiv.org/abs/2602.00598}{arXiv}}
+
+  \pubentry
+    {NeuralOM: Neural Ocean Model for Subseasonal-to-Seasonal Simulation}
+    {Yuan Gao, Hao Wu, Fan Xu, Yanfei Xiang, Ruijian Gou, \textbf{Ruiqi Shu}, Qingsong Wen, Xian Wu, Kun Wang, Xiaomeng Huang}
+    {Proceedings of the AAAI Conference on Artificial Intelligence, pp. 14756--14764, 2026}
+    {\role{Co-author}}
+    {\href{https://dblp.org/rec/conf/aaai/GaoWXXGSWWWH26}{DBLP}; \href{https://arxiv.org/abs/2505.21020}{arXiv}; \href{https://github.com/YuanGao-YG/NeuralOM}{Code}}
+
+  \pubentry
+    {Advancing Ocean State Estimation with Efficient and Scalable AI}
+    {Yanfei Xiang, Yuan Gao, Hao Wu, Quan Zhang, \textbf{Ruiqi Shu}, Xiao Zhou, Xian Wu, Xiaomeng Huang}
+    {arXiv preprint arXiv:2511.06041, 2025}
+    {\role{Co-author}}
+    {\href{https://arxiv.org/abs/2511.06041}{arXiv}}
+
+  \pubentry
+    {An Exterior-Embedding Neural Operator Framework for Preserving Conservation Laws}
+    {Huanshuo Dong, Hong Wang, Hao Wu, Zhiwei Zhuang, Xuanze Yang, \textbf{Ruiqi Shu}, Yuan Gao, Xiaomeng Huang}
+    {arXiv preprint arXiv:2511.16573, 2025}
+    {\role{Co-author}}
+    {\href{https://arxiv.org/abs/2511.16573}{arXiv}}
+
+  \pubentry
+    {Cracking the Code of Arctic Sea Ice: Why Models Fail to Predict Its Retreat?}
+    {Ruijian Gou, Gerrit Lohmann, Deliang Chen, Shiming Xu, \textbf{Ruiqi Shu}, Shaoqing Zhang, Lixin Wu}
+    {arXiv preprint arXiv:2511.04961, 2025}
+    {\role{Co-author}}
+    {\href{https://arxiv.org/abs/2511.04961}{arXiv}}
+
+  \pubentry
+    {OneForecast: A Universal Framework for Global and Regional Weather Forecasting}
+    {Yuan Gao, Hao Wu, \textbf{Ruiqi Shu}, Huanshuo Dong, Fan Xu, Rui Ray Chen, Yibo Yan, Qingsong Wen, Xuming Hu, Kun Wang, Jiahao Wu, Qing Li, Hui Xiong, Xiaomeng Huang}
+    {International Conference on Machine Learning (ICML), PMLR 267:18658--18697, 2025}
+    {\role{Co-first author}}
+    {\href{https://proceedings.mlr.press/v267/gao25r.html}{PMLR}; \href{https://openreview.net/forum?id=9xGSeVolcN}{OpenReview}; \href{https://arxiv.org/abs/2502.00338}{arXiv}; \href{https://github.com/YuanGao-YG/OneForecast}{Code}}
+
+  \pubentry
+    {Advanced Long-Term Earth System Forecasting by Learning the Small-Scale Nature}
+    {Hao Wu, Yuan Gao, \textbf{Ruiqi Shu}, Kun Wang, Ruijian Gou, Chuhan Wu, Xinliang Liu, Juncai He, Shuhao Cao, Junfeng Fang, Xingjian Shi, Feng Tao, Qi Song, Shengxuan Ji, Yanfei Xiang, Yuze Sun, Jiahao Li, Fan Xu, Huanshuo Dong, Haixin Wang, Fan Zhang, Penghao Zhao, Xian Wu, Qingsong Wen, Deliang Chen, Xiaomeng Huang}
+    {arXiv preprint arXiv:2505.19432, 2025}
+    {\role{Co-first author}}
+    {\href{https://arxiv.org/abs/2505.19432}{arXiv}}
+
+  \pubentry
+    {Turb-L1: Achieving Long-Term Turbulence Tracing by Tackling Spectral Bias}
+    {Hao Wu, Yuan Gao, \textbf{Ruiqi Shu}, Zean Han, Fan Xu, Zhihong Zhu, Qingsong Wen, Xian Wu, Kun Wang, Xiaomeng Huang}
+    {arXiv preprint arXiv:2505.19038, 2025}
+    {\role{Co-first author}}
+    {\href{https://arxiv.org/abs/2505.19038}{arXiv}}
+
+  \pubentry
+    {Advanced Forecasts of Global Extreme Marine Heatwaves Through a Physics-Guided Data-Driven Approach}
+    {\textbf{Ruiqi Shu}, Hao Wu, Yuan Gao, Fanghua Xu, Ruijian Gou, Wei Xiong, Xiaomeng Huang}
+    {Environmental Research Letters, 20(4), 044030, 2025}
+    {\role{First author}}
+    {\href{https://doi.org/10.1088/1748-9326/adbddd}{DOI}; \href{https://arxiv.org/abs/2412.15532}{arXiv}}
+
+  \pubentry
+    {BeamVQ: Beam Search with Vector Quantization to Mitigate Data Scarcity in Physical Spatiotemporal Forecasting}
+    {Weiyan Wang, Xingjian Shi, \textbf{Ruiqi Shu}, Yuan Gao, Rui Ray Chen, Kun Wang, Fan Xu, Jinbao Xue, Shuaipeng Li, Yangyu Tao, Di Wang, Hao Wu, Xiaomeng Huang}
+    {arXiv preprint arXiv:2502.18925, 2025}
+    {\role{Co-author}}
+    {\href{https://arxiv.org/abs/2502.18925}{arXiv}}
+
+  \pubentry
+    {Ocean-E2E: Hybrid Physics-Based and Data-Driven Global Forecasting of Extreme Marine Heatwaves with End-to-End Neural Assimilation}
+    {\textbf{Ruiqi Shu}, Yuan Gao, Hao Wu, Ruijian Gou, Kun Wang, Yanfei Xiang, Fan Xu, Qingsong Wen, Xiaomeng Huang}
+    {arXiv preprint arXiv:2505.22071, 2025}
+    {\role{Co-first author}}
+    {\href{https://arxiv.org/abs/2505.22071}{arXiv}}
+
+  \pubentry
+    {Impact of Downwelling-Favorable Winds on Eddy Formation in the West Greenland Current}
+    {\textbf{Ruiqi Shu}, Ruijian Gou, Clark Pennelly, Yaocheng Deng, Lixin Wu, Ke Xiao, Yitian Huang, Paul G. Myers}
+    {Journal of Physical Oceanography, 55(2), 191--201, 2025}
+    {\role{First author}}
+    {\href{https://doi.org/10.1175/JPO-D-24-0053.1}{DOI}}
+\end{enumerate}
+\normalsize
+
+\section*{Presentations}
+\entry{American Geophysical Union 2024 Fall Meeting}{Washington, D.C.}{Presenter, ``A Scale-Aware Framework for Regional to Global Marine Heatwaves Forecast''}{Dec. 2024}
+\begin{itemize}
+  \item Presented a scale-aware framework for regional-to-global marine heatwave forecasting.
+\end{itemize}
+
+\section*{Honors \& Awards}
+\begin{tabularx}{\textwidth}{@{}p{2.8cm}X@{}}
+2022 & \textbf{National Scholarship}, Ministry of Education of the PRC\\
+2023 & \textbf{National 2nd Prize}, Chinese Mathematics Competitions\\
+2022 & \textbf{1st Prize}, China Undergraduate Mathematical Contest in Modeling\\
+2019 & \textbf{Silver Medal}, Chinese Mathematical Olympiad\\
+\end{tabularx}
+
+\section*{Academic Service}
+\begin{tabularx}{\textwidth}{@{}p{3.2cm}X@{}}
+Reviewer & ICLR, KDD, ICML\\
+Research Areas & AI4Science; AI4PDE; Geophysical Fluid Dynamics; AI for Earth System Science\\
+\end{tabularx}
+
+\section*{Miscellaneous}
+Road cycling enthusiast. \href{https://chiyodamomo01.github.io/}{Personal homepage} includes a small miscellaneous note and road bike photo.
+
+\vfill
+{\footnotesize\color{textgray} Last updated: May 2026.}
+
+\end{document}
