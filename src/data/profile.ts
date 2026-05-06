@@ -33,6 +33,7 @@ export const navItems = [
   ["Experience", "experience"],
   ["Service", "service"],
   ["Miscellaneous", "miscellaneous"],
+  ["Visitors", "visitors"],
 ] as const;
 
 export const news: NewsItem[] = [
@@ -124,4 +125,11 @@ export const services = {
 export const miscellaneous = {
   text: "I am also a road cycling enthusiast.",
   bikeImage: "/images/miscellaneous/road-bike.png",
+};
+
+export const visitorMap = {
+  provider: "MapMyVisitors",
+  setupUrl: "https://mapmyvisitors.com/add/",
+  embedUrl: "",
+  note: "A live visitor map will plot approximate visitor locations using IP-based geolocation once the widget is connected.",
 };

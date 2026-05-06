@@ -4,6 +4,7 @@ import {
   BookOpen,
   Github,
   GraduationCap,
+  Globe2,
   Mail,
   MapPin,
   Microscope,
@@ -11,7 +12,7 @@ import {
   Bike,
   Sparkles,
 } from "lucide-react";
-import { awards, experience, miscellaneous, navItems, news, profile, services } from "./data/profile";
+import { awards, experience, miscellaneous, navItems, news, profile, services, visitorMap } from "./data/profile";
 import { publications } from "./data/publications";
 
 function App() {
@@ -191,6 +192,35 @@ function App() {
             <a className="bike-preview" href={miscellaneous.bikeImage} target="_blank" rel="noreferrer" aria-label="View my road bike">
               <img src={miscellaneous.bikeImage} alt="Ruiqi Shu's road bike" />
             </a>
+          </div>
+        </Section>
+
+        <Section id="visitors" label="Visitor Map" icon={<Globe2 size={22} />}>
+          <div className="visitor-card">
+            <div className="visitor-map-frame">
+              {visitorMap.embedUrl ? (
+                <iframe
+                  title="Visitor map"
+                  src={visitorMap.embedUrl}
+                  loading="lazy"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                />
+              ) : (
+                <div className="visitor-map-placeholder">
+                  <Globe2 size={42} />
+                  <span>Visitor map pending widget connection</span>
+                </div>
+              )}
+            </div>
+            <div className="visitor-copy">
+              <h3>Global Visitors</h3>
+              <p>{visitorMap.note}</p>
+              {!visitorMap.embedUrl && (
+                <a href={visitorMap.setupUrl} target="_blank" rel="noreferrer">
+                  Set up {visitorMap.provider} <ArrowUpRight size={14} />
+                </a>
+              )}
+            </div>
           </div>
         </Section>
       </main>
