@@ -130,6 +130,8 @@ export const miscellaneous = {
 export const visitorMap = {
   provider: "MapMyVisitors",
   linkUrl: "https://mapmyvisitors.com/web/1c4bu",
-  imageUrl: "https://mapmyvisitors.com/map.png?d=F88uieSfA7NOO5A0OAHGaI14pJGmrc3xg-fyPCxT3Ww&cl=ffffff",
+  imageUrl: "https://mapmyvisitors.com/map.png?d=F88uieSfA7NOO5A0OAHGaI14pJGmrc3xg-fyPCxT3Ww&cl=ffffff&w=640",
+  imageSrcSet:
+    "https://mapmyvisitors.com/map.png?d=F88uieSfA7NOO5A0OAHGaI14pJGmrc3xg-fyPCxT3Ww&cl=ffffff&w=640 1x, https://mapmyvisitors.com/map.png?d=F88uieSfA7NOO5A0OAHGaI14pJGmrc3xg-fyPCxT3Ww&cl=ffffff&w=960 2x",
   note: "A live visitor map plots approximate visitor locations using IP-based geolocation.",
 };

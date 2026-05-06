@@ -199,7 +199,7 @@ function App() {
           <div className="visitor-card">
             <div className="visitor-map-frame">
               <a href={visitorMap.linkUrl} target="_blank" rel="noreferrer" aria-label="Open visitor map details">
-                <img src={visitorMap.imageUrl} alt="World map of homepage visitors" />
+                <img src={visitorMap.imageUrl} srcSet={visitorMap.imageSrcSet} alt="World map of homepage visitors" />
               </a>
             </div>
             <div className="visitor-copy">
