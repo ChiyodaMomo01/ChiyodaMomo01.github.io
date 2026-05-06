@@ -129,7 +129,7 @@ export const miscellaneous = {
 
 export const visitorMap = {
   provider: "MapMyVisitors",
-  setupUrl: "https://mapmyvisitors.com/add/",
-  embedUrl: "",
-  note: "A live visitor map will plot approximate visitor locations using IP-based geolocation once the widget is connected.",
+  linkUrl: "https://mapmyvisitors.com/web/1c4bu",
+  imageUrl: "https://mapmyvisitors.com/map.png?d=F88uieSfA7NOO5A0OAHGaI14pJGmrc3xg-fyPCxT3Ww&cl=ffffff",
+  note: "A live visitor map plots approximate visitor locations using IP-based geolocation.",
 };

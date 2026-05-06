@@ -198,28 +198,16 @@ function App() {
         <Section id="visitors" label="Visitor Map" icon={<Globe2 size={22} />}>
           <div className="visitor-card">
             <div className="visitor-map-frame">
-              {visitorMap.embedUrl ? (
-                <iframe
-                  title="Visitor map"
-                  src={visitorMap.embedUrl}
-                  loading="lazy"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                />
-              ) : (
-                <div className="visitor-map-placeholder">
-                  <Globe2 size={42} />
-                  <span>Visitor map pending widget connection</span>
-                </div>
-              )}
+              <a href={visitorMap.linkUrl} target="_blank" rel="noreferrer" aria-label="Open visitor map details">
+                <img src={visitorMap.imageUrl} alt="World map of homepage visitors" />
+              </a>
             </div>
             <div className="visitor-copy">
               <h3>Global Visitors</h3>
               <p>{visitorMap.note}</p>
-              {!visitorMap.embedUrl && (
-                <a href={visitorMap.setupUrl} target="_blank" rel="noreferrer">
-                  Set up {visitorMap.provider} <ArrowUpRight size={14} />
-                </a>
-              )}
+              <a href={visitorMap.linkUrl} target="_blank" rel="noreferrer">
+                View tracker details <ArrowUpRight size={14} />
+              </a>
             </div>
           </div>
         </Section>
