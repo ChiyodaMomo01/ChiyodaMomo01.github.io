@@ -2,6 +2,7 @@ import {
   ArrowUpRight,
   Award,
   BookOpen,
+  Download,
   Github,
   GraduationCap,
   Globe2,
@@ -62,6 +63,10 @@ function App() {
               <a className="button" href={profile.scholar}>
                 <BookOpen size={18} />
                 Scholar
+              </a>
+              <a className="button" href={profile.cv} download>
+                <Download size={18} />
+                Download CV
               </a>
             </div>
           </div>

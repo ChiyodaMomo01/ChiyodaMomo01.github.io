@@ -23,6 +23,7 @@ export const profile = {
   scholarStatus: "Google Scholar citations: 103 · h-index: 5 · i10-index: 4",
   neuralPom: "https://neural-pom.vercel.app/",
   photo: "/images/shuruiqi.jpg",
+  cv: "/files/ruiqi_shu_cv.pdf",
 };
 
 export const navItems = [
