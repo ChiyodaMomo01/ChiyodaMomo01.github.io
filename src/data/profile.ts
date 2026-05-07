@@ -22,7 +22,7 @@ export const profile = {
   scholar: "https://scholar.google.com/citations?user=WKBB3r0AAAAJ&hl=zh-CN",
   scholarStatus: "Google Scholar citations: 103 · h-index: 5 · i10-index: 4",
   neuralPom: "https://neural-pom.vercel.app/",
-  photo: "/images/ruiqi-shu.jpg",
+  photo: "/images/shuruiqi.jpg",
 };
 
 export const navItems = [
