@@ -49,8 +49,8 @@ export const publications: Publication[] = [
   {
     title: "An Exterior-Embedding Neural Operator Framework for Preserving Conservation Laws",
     authors: "Huanshuo Dong, Hong Wang, Hao Wu, Zhiwei Zhuang, Xuanze Yang, Ruiqi Shu, Yuan Gao, Xiaomeng Huang",
-    venue: "arXiv preprint arXiv:2511.16573",
-    date: "2025",
+    venue: "KDD 2026 Research Track",
+    date: "2026",
     role: "Co-author",
     summary: "A neural operator framework designed to preserve conservation laws through exterior embedding.",
     links: [{ label: "arXiv", url: "https://arxiv.org/abs/2511.16573" }],
@@ -130,9 +130,9 @@ export const publications: Publication[] = [
   {
     title: "Ocean-E2E: Hybrid Physics-Based and Data-Driven Global Forecasting of Extreme Marine Heatwaves with End-to-End Neural Assimilation",
     authors: "Ruiqi Shu, Yuan Gao, Hao Wu, Ruijian Gou, Kun Wang, Yanfei Xiang, Fan Xu, Qingsong Wen, Xiaomeng Huang",
-    venue: "arXiv preprint arXiv:2505.22071",
-    date: "2025",
-    role: "Co-first author",
+    venue: "KDD 2026 AI4Sciences Track",
+    date: "2026",
+    role: "First author",
     summary: "Hybrid physics-based and data-driven forecasting of extreme marine heatwaves with end-to-end neural assimilation.",
     links: [{ label: "arXiv", url: "https://arxiv.org/abs/2505.22071" }],
     image: "/images/publications/ocean-e2e.png",

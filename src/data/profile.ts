@@ -39,6 +39,11 @@ export const navItems = [
 
 export const news: NewsItem[] = [
   {
+    date: "May 16, 2026",
+    label: "KDD 2026",
+    text: "Two papers were accepted to KDD 2026: Ocean-E2E to the AI4Sciences Track as first author, and An Exterior-Embedding Neural Operator Framework for Preserving Conservation Laws to the Research Track as co-author. Congratulations to all collaborators.",
+  },
+  {
     date: "May 2026",
     label: "ICML 2026",
     text: "First-author paper accepted to ICML 2026. Congratulations to all collaborators.",
