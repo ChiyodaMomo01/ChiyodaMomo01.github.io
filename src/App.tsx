@@ -16,6 +16,11 @@ import {
 import { awards, experience, miscellaneous, navItems, news, profile, services, visitorMap } from "./data/profile";
 import { publications } from "./data/publications";
 
+function splitPublicationTitle(title: string) {
+  const match = title.match(/^(.*)\s+\[([^\]]+)\]$/);
+  return match ? { title: match[1], venue: match[2] } : { title };
+}
+
 function App() {
   return (
     <>
@@ -119,33 +124,40 @@ function App() {
 
         <Section id="publications" label="Publications" icon={<BookOpen size={22} />}>
           <div className="publication-list">
-            {publications.map((paper) => (
-              <article className="publication-card" key={paper.title}>
-                <div className="paper-figure">
-                  {paper.image ? <img src={paper.image} alt={`${paper.title} representative figure`} /> : <span>{paper.imageStatus ?? "Figure pending"}</span>}
-                </div>
-                <div className="paper-body">
-                  <div className="paper-meta">
-                    <span className="badge">{paper.role}</span>
-                    <span>{paper.venue}</span>
-                    <span>{paper.date}</span>
+            {publications.map((paper) => {
+              const paperTitle = splitPublicationTitle(paper.title);
+
+              return (
+                <article className="publication-card" key={paper.title}>
+                  <div className="paper-figure">
+                    {paper.image ? <img src={paper.image} alt={`${paper.title} representative figure`} /> : <span>{paper.imageStatus ?? "Figure pending"}</span>}
                   </div>
-                  <h3>{paper.title}</h3>
-                  <p className="authors">{paper.authors}</p>
-                  <p className="paper-summary">{paper.summary}</p>
-                  {paper.links.length > 0 && (
-                    <div className="paper-links">
-                      {paper.links.map((link) => (
-                        <a href={link.url} key={link.url}>
-                          {link.label}
-                          <ArrowUpRight size={14} />
-                        </a>
-                      ))}
+                  <div className="paper-body">
+                    <div className="paper-meta">
+                      <span className="badge">{paper.role}</span>
+                      <span>{paper.venue}</span>
+                      <span>{paper.date}</span>
                     </div>
-                  )}
-                </div>
-              </article>
-            ))}
+                    <h3>
+                      {paperTitle.title}
+                      {paperTitle.venue ? <span className="venue-tag">{paperTitle.venue}</span> : null}
+                    </h3>
+                    <p className="authors">{paper.authors}</p>
+                    <p className="paper-summary">{paper.summary}</p>
+                    {paper.links.length > 0 && (
+                      <div className="paper-links">
+                        {paper.links.map((link) => (
+                          <a href={link.url} key={link.url}>
+                            {link.label}
+                            <ArrowUpRight size={14} />
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </article>
+              );
+            })}
           </div>
         </Section>
 

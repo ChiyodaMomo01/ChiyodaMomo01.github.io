@@ -380,6 +380,23 @@ time {
   font-size: clamp(1.25rem, 2vw, 1.55rem);
 }
 
+.venue-tag {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.55rem;
+  transform: translateY(-0.08em);
+  border: 1px solid rgba(13, 127, 131, 0.2);
+  border-radius: 999px;
+  padding: 0.18rem 0.52rem;
+  color: var(--teal);
+  background: rgba(13, 127, 131, 0.08);
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
 .authors {
   color: #42534f;
   font-size: 0.95rem;
