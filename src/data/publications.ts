@@ -22,7 +22,7 @@ export const publications: Publication[] = [
     image: "/images/publications/hybridom.png",
   },
   {
-    title: "NeuralOM: Neural Ocean Model for Subseasonal-to-Seasonal Simulation",
+    title: "NeuralOM: Neural Ocean Model for Subseasonal-to-Seasonal Simulation [AAAI 2026]",
     authors:
       "Yuan Gao, Hao Wu, Fan Xu, Yanfei Xiang, Ruijian Gou, Ruiqi Shu, Qingsong Wen, Xian Wu, Kun Wang, Xiaomeng Huang",
     venue: "AAAI 2026, pp. 14756-14764",
