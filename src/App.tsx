@@ -73,6 +73,10 @@ function App() {
                 <Download size={18} />
                 Download CV
               </a>
+              <a className="button" href={profile.cvZh} download>
+                <Download size={18} />
+                中文 CV
+              </a>
             </div>
           </div>
           <aside className="hero-side" aria-label="Portrait and research highlight">

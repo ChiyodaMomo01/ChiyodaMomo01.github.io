@@ -24,6 +24,7 @@ export const profile = {
   neuralPom: "https://neural-pom.vercel.app/",
   photo: "/images/shuruiqi.jpg",
   cv: "/files/ruiqi_shu_cv.pdf",
+  cvZh: "/files/ruiqi_shu_cv_zh.pdf",
 };
 
 export const navItems = [

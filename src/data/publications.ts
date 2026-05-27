@@ -12,9 +12,9 @@ export type Publication = {
 
 export const publications: Publication[] = [
   {
-    title: "HybridOM: Hybrid Physics-Based and Data-Driven Global Ocean Modeling with Efficient Spatial Downscaling [ICML 2026]",
+    title: "HybridOM: Hybrid Physics-Based and Data-Driven Global Ocean Modeling with Efficient Spatial Downscaling [ICML 2026, CCF-A]",
     authors: "Ruiqi Shu, Xiaohui Zhong, Qiusheng Huang, Ruijian Gou, Tianrun Gao, Hao Li, Xiaomeng Huang",
-    venue: "Accepted by ICML 2026",
+    venue: "Accepted by ICML 2026 (CCF-A)",
     date: "2026",
     role: "First author",
     summary: "A hybrid physics-based and data-driven framework for global ocean modeling with efficient spatial downscaling.",
@@ -22,10 +22,10 @@ export const publications: Publication[] = [
     image: "/images/publications/hybridom.png",
   },
   {
-    title: "NeuralOM: Neural Ocean Model for Subseasonal-to-Seasonal Simulation [AAAI 2026]",
+    title: "NeuralOM: Neural Ocean Model for Subseasonal-to-Seasonal Simulation [AAAI 2026, CCF-A]",
     authors:
       "Yuan Gao, Hao Wu, Fan Xu, Yanfei Xiang, Ruijian Gou, Ruiqi Shu, Qingsong Wen, Xian Wu, Kun Wang, Xiaomeng Huang",
-    venue: "AAAI 2026, pp. 14756-14764",
+    venue: "AAAI 2026 (CCF-A), pp. 14756-14764",
     date: "2026",
     role: "Co-author",
     summary: "A neural ocean model for stable subseasonal-to-seasonal ocean simulation with multi-scale interactive graph modeling.",
@@ -37,9 +37,9 @@ export const publications: Publication[] = [
     image: "/images/publications/neuralom.png",
   },
   {
-    title: "An Exterior-Embedding Neural Operator Framework for Preserving Conservation Laws [KDD 2026 Research Track]",
+    title: "An Exterior-Embedding Neural Operator Framework for Preserving Conservation Laws [KDD 2026 Research Track, CCF-A]",
     authors: "Huanshuo Dong, Hong Wang, Hao Wu, Zhiwei Zhuang, Xuanze Yang, Ruiqi Shu, Yuan Gao, Xiaomeng Huang",
-    venue: "Accepted by KDD 2026 Research Track",
+    venue: "Accepted by KDD 2026 Research Track (CCF-A)",
     date: "2026",
     role: "Co-author",
     summary: "A neural operator framework designed to preserve conservation laws through exterior embedding.",
@@ -47,9 +47,9 @@ export const publications: Publication[] = [
     image: "/images/publications/exterior-embedding-neural-operator.png",
   },
   {
-    title: "Ocean-E2E: Hybrid Physics-Based and Data-Driven Global Forecasting of Extreme Marine Heatwaves with End-to-End Neural Assimilation [KDD 2026 AI4Sciences Track]",
+    title: "Ocean-E2E: Hybrid Physics-Based and Data-Driven Global Forecasting of Extreme Marine Heatwaves with End-to-End Neural Assimilation [KDD 2026 AI4Sciences Track, CCF-A]",
     authors: "Ruiqi Shu, Yuan Gao, Hao Wu, Ruijian Gou, Kun Wang, Yanfei Xiang, Fan Xu, Qingsong Wen, Xiaomeng Huang",
-    venue: "Accepted by KDD 2026 AI4Sciences Track",
+    venue: "Accepted by KDD 2026 AI4Sciences Track (CCF-A)",
     date: "2026",
     role: "First author",
     summary: "Hybrid physics-based and data-driven forecasting of extreme marine heatwaves with end-to-end neural assimilation.",
@@ -57,10 +57,10 @@ export const publications: Publication[] = [
     image: "/images/publications/ocean-e2e.png",
   },
   {
-    title: "OneForecast: A Universal Framework for Global and Regional Weather Forecasting [ICML 2025]",
+    title: "OneForecast: A Universal Framework for Global and Regional Weather Forecasting [ICML 2025, CCF-A]",
     authors:
       "Yuan Gao, Hao Wu, Ruiqi Shu, Huanshuo Dong, Fan Xu, Rui Ray Chen, Yibo Yan, Qingsong Wen, Xuming Hu, Kun Wang, Jiahao Wu, Qing Li, Hui Xiong, Xiaomeng Huang",
-    venue: "ICML 2025, PMLR 267:18658-18697",
+    venue: "ICML 2025 (CCF-A), PMLR 267:18658-18697",
     date: "2025",
     role: "Co-first author",
     summary: "A global-regional nested forecasting framework that unifies weather prediction across spatial scales.",
