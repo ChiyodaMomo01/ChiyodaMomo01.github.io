@@ -43,7 +43,7 @@ export const blogPosts: BlogPost[] = [
     },
     dek: {
       zh: "一篇关于海洋模拟、物理模型、数据驱动方法、在线训练和可微分动力核心的阶段性学习笔记。",
-      en: "A working note on ocean simulation, physical models, data-driven methods, online training, and differentiable dynamical cores.",
+      en: "A working note on ocean simulation, physical models, data-driven methods, online training, and dynamical cores.",
     },
     content: {
       zh: [
@@ -117,7 +117,7 @@ export const blogPosts: BlogPost[] = [
         {
           type: "paragraph",
           text:
-            "这就是可微分动力框架（Differential Dynamical Core）重要的原因。它听起来像一个技术名词，实际关系到在线训练能不能真正落地。关于这个话题，我推荐大家阅读一下这个综述 [9]，已经把可微分模型、伴随、自动微分和机器学习之间的关系梳理得很清楚。从海洋传统伴随模型到今天 JAX、PyTorch 等自动微分框架，技术路径在变化，核心问题其实很接近：如果想根据未来误差改进模型内部参数，物理推进过程就要允许梯度穿过去 [9,10]。",
+            "这就是可微分动力框架（Dynamical core）重要的原因。它听起来像一个技术名词，实际关系到在线训练能不能真正落地。关于这个话题，我推荐大家阅读一下这个综述 [9]，已经把可微分模型、伴随、自动微分和机器学习之间的关系梳理得很清楚。从海洋传统伴随模型到今天 JAX、PyTorch 等自动微分框架，技术路径在变化，核心问题其实很接近：如果想根据未来误差改进模型内部参数，物理推进过程就要允许梯度穿过去 [9,10]。",
         },
         {
           type: "paragraph",
@@ -226,7 +226,7 @@ export const blogPosts: BlogPost[] = [
         {
           type: "paragraph",
           text:
-            "For this reason, recent system-level neural ocean prediction efforts are worth watching. GLONET frames end-to-end neural global ocean forecasting as an explicit goal [11]. HybridOM places a simplified differentiable ocean dynamical framework and data-driven correction into a global ocean modeling system [12]. Ocean-E2E connects end-to-end neural assimilation with extreme marine heatwave prediction [13]. These works are still developing rapidly and remain far from mature operational systems, but they suggest a route worth exploring: ocean AI should not stop at post-processing correction or one-step fitting. It needs to enter the dynamical core, state estimation, and multi-step prediction.",
+            "For this reason, recent system-level neural ocean prediction efforts are worth watching. GLONET frames end-to-end neural global ocean forecasting as an explicit goal [11]. HybridOM places a simplified differentiable ocean dynamical core and data-driven correction into a global ocean modeling system [12]. Ocean-E2E connects end-to-end neural assimilation with extreme marine heatwave prediction [13]. These works are still developing rapidly and remain far from mature operational systems, but they suggest a route worth exploring: ocean AI should not stop at post-processing correction or one-step fitting. It needs to enter the dynamical core, state estimation, and multi-step prediction.",
         },
         {
           type: "paragraph",
@@ -236,12 +236,12 @@ export const blogPosts: BlogPost[] = [
         {
           type: "paragraph",
           text:
-            "Compared with traditional data-driven models, the first potential advantage is longer-range physically consistent prediction and, more importantly, better out-of-distribution modeling. The first part is familiar: because a hybrid model preserves a physical framework, it should in principle be more physically consistent and stable. But this advantage should not be overstated. State-of-the-art purely data-driven models, by scaling neural networks, can already produce stable simulations over many years. Whether hybrid models can maintain a decisive advantage under the momentum of scaling laws remains an open question. The more important point, in my view, is OOD behavior. A purely data-driven model cannot fully overcome this in principle. For example, the overall distribution of atmospheric circulation may shift substantially a century from now, making it difficult for an AI model to parse the pattern from training statistics alone. But the primitive equations governing atmospheric motion do not change with that distribution shift. This is where the dynamical framework of a hybrid model can matter.",
+            "Compared with traditional data-driven models, the first potential advantage is longer-range physically consistent prediction and, more importantly, better out-of-distribution modeling. The first part is familiar: because a hybrid model preserves a physical framework, it should in principle be more physically consistent and stable. But this advantage should not be overstated. State-of-the-art purely data-driven models, by scaling neural networks, can already produce stable simulations over many years. Whether hybrid models can maintain a decisive advantage under the momentum of scaling laws remains an open question. The more important point, in my view, is OOD behavior. A purely data-driven model cannot fully overcome this in principle. For example, the overall distribution of atmospheric circulation may shift substantially a century from now, making it difficult for an AI model to parse the pattern from training statistics alone. But the primitive equations governing atmospheric motion do not change with that distribution shift. This is where the dynamical core of a hybrid model can matter.",
         },
         {
           type: "paragraph",
           text:
-            "Compared with traditional numerical models, hybrid models may in principle improve modeling accuracy, thanks to the fitting ability of neural networks, and may reduce computational cost to some extent. The first point is straightforward: neural networks can learn mappings from data and help search a vast parameter space. The second point is less rigorous, because there is a trade-off between neural-network computation and dynamical-core computation. A complete dynamical framework may reduce the burden on the neural network, while a simplified framework may demand much more from it. How to fairly compare GPU-based hybrid models with CPU-cluster numerical models is itself a question worth thinking about.",
+            "Compared with traditional numerical models, hybrid models may in principle improve modeling accuracy, thanks to the fitting ability of neural networks, and may reduce computational cost to some extent. The first point is straightforward: neural networks can learn mappings from data and help search a vast parameter space. The second point is less rigorous, because there is a trade-off between neural-network computation and dynamical-core computation. A complete dynamical core may reduce the burden on the neural network, while a simplified core may demand much more from it. How to fairly compare GPU-based hybrid models with CPU-cluster numerical models is itself a question worth thinking about.",
         },
         {
           type: "paragraph",
