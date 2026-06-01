@@ -11,7 +11,6 @@ export type BlogPost = {
   slug: string;
   date: string;
   readTime: string;
-  tags: string[];
   title: Record<BlogLanguage, string>;
   dek: Record<BlogLanguage, string>;
   content: Record<BlogLanguage, BlogBlock[]>;
@@ -38,7 +37,6 @@ export const blogPosts: BlogPost[] = [
     slug: "ocean-hybrid-ai-thinking-1",
     date: "June 1, 2026",
     readTime: "12 min read",
-    tags: ["AI4Science", "Ocean Modeling", "Hybrid Models", "Differentiable Simulation"],
     title: {
       zh: "关于混合物理-AI海洋/大气模型的一些思考（1）",
       en: "Some Thoughts on Hybrid Physics-AI Ocean and Atmosphere Models (1)",
@@ -63,7 +61,7 @@ export const blogPosts: BlogPost[] = [
           type: "paragraph",
           text: "如果把某一时刻的海洋状态记作 x_t，它可以粗略理解为一个很高维的向量，里面装着不同空间位置、不同深度、不同变量的信息。预测问题最简单的写法，就是从当前状态走到下一时刻：",
         },
-        { type: "equation", text: "x_{t+Δt} = 𝓕(x_t, t)" },
+        { type: "equation", text: "\\mathbf{x}_{t+\\Delta t}=\\mathcal{F}(\\mathbf{x}_t,t)" },
         {
           type: "paragraph",
           text:
@@ -74,7 +72,7 @@ export const blogPosts: BlogPost[] = [
           text:
             "这几年机器学习模型进展很快，尤其是在天气预报里，已经给大家带来了很强的冲击。NeuralGCM 这类工作把神经网络和大气环流模型放到同一个预测框架里，说明 AI 天气模型已经开始从纯映射走向更结构化的物理融合（在后续的文章中会深入讨论） [2]。海洋领域自然也会关心这些方法。数据驱动模型可以把状态之间的映射直接学出来，形式上可以写成：",
         },
-        { type: "equation", text: "x̂_{t+Δt} = 𝓝_θ(x_t)" },
+        { type: "equation", text: "\\hat{\\mathbf{x}}_{t+\\Delta t}=\\mathcal{N}_{\\theta}(\\mathbf{x}_t)" },
         {
           type: "paragraph",
           text:
@@ -85,7 +83,7 @@ export const blogPosts: BlogPost[] = [
           text:
             "所以我现在更关心的，是 AI 怎样进入已有的物理框架，怎样和海洋模式中那些已经积累了很久的知识接在一起。一个比较自然的想法，是把已知的物理过程继续交给方程和数值求解器处理，把暂时写不准、算不细、参数化困难的部分，交给神经网络去学习。这样得到的混合物理和数据驱动模型，可以粗略写成：",
         },
-        { type: "equation", text: "dx/dt = 𝓜_phys(x) + 𝓝_θ(x, p)" },
+        { type: "equation", text: "\\frac{d\\mathbf{x}}{dt}=\\mathcal{M}_{phys}(\\mathbf{x})+\\mathcal{N}_{\\theta}(\\mathbf{x},\\mathbf{p})" },
         {
           type: "paragraph",
           text:
@@ -100,7 +98,7 @@ export const blogPosts: BlogPost[] = [
           type: "paragraph",
           text: "训练方式也会因此变得关键。离线训练比较直接，可以用高分辨率模拟或再分析资料构造监督样本，先训练出一个参数化模块，再接入模式。它的损失函数可以写得很简单：",
         },
-        { type: "equation", text: "𝓛_offline(θ) = ‖𝓝_θ(x_t) - y_t‖²₂" },
+        { type: "equation", text: "\\mathcal{L}_{offline}(\\theta)=\\left\\|\\mathcal{N}_{\\theta}(\\mathbf{x}_t)-\\mathbf{y}_t\\right\\|_2^2" },
         {
           type: "paragraph",
           text:
@@ -110,7 +108,7 @@ export const blogPosts: BlogPost[] = [
           type: "paragraph",
           text: "在线训练的想法，是让混合模型在训练阶段就滚动起来。我们不只看下一步准不准，也看未来几步之后还稳不稳。类似的 coupled online learning 工作已经把这个问题明确表述为缓解神经网络参数化不稳定和偏差的一条路径 [8]。一个简化写法是：",
         },
-        { type: "equation", text: "𝓛_online(θ) = Σ_{k=1}^{K} ‖𝓗(x_{t+k}^θ) - y_{t+k}‖²₂ + λ𝓡(x_{t:t+K}^θ)" },
+        { type: "equation", text: "\\mathcal{L}_{online}(\\theta)=\\sum_{k=1}^{K}\\left\\|\\mathcal{H}(\\mathbf{x}_{t+k}^{\\theta})-\\mathbf{y}_{t+k}\\right\\|_2^2+\\lambda\\mathcal{R}(\\mathbf{x}_{t:t+K}^{\\theta})" },
         {
           type: "paragraph",
           text:
@@ -168,7 +166,7 @@ export const blogPosts: BlogPost[] = [
             "To talk about ocean prediction, it is useful to begin with a simple question: what exactly are we trying to predict, and why is it so difficult? The ocean is not a passive background of the climate system. It participates in the exchange of energy, momentum, freshwater, and carbon, and it affects weather, climate, and many concrete decisions. In models we see variables such as temperature, salinity, velocity, and sea-surface height. At a deeper level, we are trying to understand a multiscale, strongly nonlinear, and sparsely observed system in a computable way. Similar points have been repeatedly emphasized in recent reviews on machine learning, ocean observations, theory, and numerical simulation [1].",
         },
         { type: "paragraph", text: "If the ocean state at time t is denoted by x_t, it can be viewed as a high-dimensional vector containing variables at different locations, depths, and physical fields. The simplest form of the prediction problem is to advance the current state to the next time:" },
-        { type: "equation", text: "x_{t+Δt} = 𝓕(x_t, t)" },
+        { type: "equation", text: "\\mathbf{x}_{t+\\Delta t}=\\mathcal{F}(\\mathbf{x}_t,t)" },
         {
           type: "paragraph",
           text:
@@ -179,7 +177,7 @@ export const blogPosts: BlogPost[] = [
           text:
             "Machine learning models have advanced rapidly in recent years, especially in weather forecasting. Work such as NeuralGCM places neural networks and atmospheric general circulation models in a single forecasting framework, suggesting that AI weather models are moving from pure mappings toward more structured physical integration [2]. The ocean community naturally cares about similar ideas. A data-driven model can directly learn the mapping between states:",
         },
-        { type: "equation", text: "x̂_{t+Δt} = 𝓝_θ(x_t)" },
+        { type: "equation", text: "\\hat{\\mathbf{x}}_{t+\\Delta t}=\\mathcal{N}_{\\theta}(\\mathbf{x}_t)" },
         {
           type: "paragraph",
           text:
@@ -190,7 +188,7 @@ export const blogPosts: BlogPost[] = [
           text:
             "This is why I am more interested in how AI should enter existing physical frameworks and connect with the knowledge already accumulated in ocean models. A natural idea is to let equations and numerical solvers keep handling the physical processes we understand, while neural networks learn the parts that are hard to write down, expensive to resolve, or difficult to parameterize. A hybrid physics and data-driven model can be written schematically as:",
         },
-        { type: "equation", text: "dx/dt = 𝓜_phys(x) + 𝓝_θ(x, p)" },
+        { type: "equation", text: "\\frac{d\\mathbf{x}}{dt}=\\mathcal{M}_{phys}(\\mathbf{x})+\\mathcal{N}_{\\theta}(\\mathbf{x},\\mathbf{p})" },
         {
           type: "paragraph",
           text:
@@ -202,14 +200,14 @@ export const blogPosts: BlogPost[] = [
             "A distinction is important here. Weak physical constraints usually keep the neural network as the main model while injecting physics through losses, inputs, or architectures, such as conservation penalties, gradient features, or symmetry-aware networks. Strong physical constraints go further: the numerical solver remains the backbone, and the neural network is embedded inside the dynamical equations. The network is no longer only mapping historical data to the next state; it advances together with the model at every time step. This logic is also reminiscent of self-forcing in video generation, where multi-step supervision is used to reduce rollout error.",
         },
         { type: "paragraph", text: "Training strategy therefore becomes crucial. Offline training is straightforward: use high-resolution simulations or reanalysis data to create supervised samples, train a parameterization module, and then insert it into the model. A simple loss is:" },
-        { type: "equation", text: "𝓛_offline(θ) = ‖𝓝_θ(x_t) - y_t‖²₂" },
+        { type: "equation", text: "\\mathcal{L}_{offline}(\\theta)=\\left\\|\\mathcal{N}_{\\theta}(\\mathbf{x}_t)-\\mathbf{y}_t\\right\\|_2^2" },
         {
           type: "paragraph",
           text:
             "Here y_t may be a target physical tendency, a residual term, or a reference from high-resolution data. The objective is clear: fit the current sample. The problem is that a real model run faces multi-step feedback. A parameterization module that looks good offline may still cause drift, instability, or oversmoothing after it is coupled into the dynamical core. This has appeared repeatedly in both atmosphere and ocean studies [3-5].",
         },
         { type: "paragraph", text: "Online training lets the hybrid model roll out during training. We do not only ask whether the next step is accurate; we also ask whether the model remains stable several steps later. Coupled online learning has been proposed as one path to reducing instabilities and biases in neural network parameterizations [8]. A simplified objective is:" },
-        { type: "equation", text: "𝓛_online(θ) = Σ_{k=1}^{K} ‖𝓗(x_{t+k}^θ) - y_{t+k}‖²₂ + λ𝓡(x_{t:t+K}^θ)" },
+        { type: "equation", text: "\\mathcal{L}_{online}(\\theta)=\\sum_{k=1}^{K}\\left\\|\\mathcal{H}(\\mathbf{x}_{t+k}^{\\theta})-\\mathbf{y}_{t+k}\\right\\|_2^2+\\lambda\\mathcal{R}(\\mathbf{x}_{t:t+K}^{\\theta})" },
         {
           type: "paragraph",
           text:

@@ -14,7 +14,9 @@ import {
   PenLine,
   Sparkles,
 } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import katex from "katex";
+import "katex/dist/katex.min.css";
+import { type Dispatch, type SetStateAction, useEffect, useMemo, useState } from "react";
 import { blogPosts, type BlogBlock, type BlogLanguage } from "./data/blog";
 import { awards, experience, miscellaneous, navItems, news, profile, services, visitorMap } from "./data/profile";
 import { publications } from "./data/publications";
@@ -113,19 +115,29 @@ function HomePage() {
             <div className="portrait-card">
               <img src={profile.photo} alt="Portrait of Ruiqi Shu" />
             </div>
-            <div className="hero-panel">
-              <p className="panel-label">Current focus</p>
-              <h2>Differentiable ocean modeling with machine learning</h2>
-              <p>
-                I am actively recruiting and looking for collaborators interested in coupling a full differentiable ocean
-                numerical model with machine learning.
-              </p>
-              <a href={profile.neuralPom} className="text-link">
-                Explore Neural-POM <ArrowUpRight size={16} />
-              </a>
+            <div className="hero-panel-grid">
+              <div className="hero-panel">
+                <p className="panel-label">Current focus</p>
+                <h2>Differentiable ocean modeling with machine learning</h2>
+                <p>
+                  I am actively recruiting and looking for collaborators interested in coupling a full differentiable ocean
+                  numerical model with machine learning.
+                </p>
+                <a href={profile.neuralPom} className="text-link">
+                  Explore Neural-POM <ArrowUpRight size={16} />
+                </a>
+              </div>
+              <div className="hero-panel blog-entry-panel">
+                <p className="panel-label">Research blog</p>
+                <h2>Notes on AI and scientific modeling</h2>
+                <p>
+                  Reading notes, technical reflections, and longer thoughts on AI4Science, ocean modeling, and scientific
+                  machine learning.
+                </p>
               <a href="#blog" className="text-link blog-panel-link">
                 Read Blog <PenLine size={16} />
               </a>
+              </div>
             </div>
           </aside>
         </section>
@@ -284,7 +296,7 @@ function BlogPage({ slug }: { slug: string | null }) {
     <section className="blog-shell section-shell">
       <div className="blog-hero">
         <p className="eyebrow">Research Blog</p>
-        <h1>Notes on AI, oceans, and scientific modeling</h1>
+        <h1>Notes on AI and scientific modeling</h1>
         <p>
           Longer-form notes on papers, experiments, research ideas, and the occasional question that refuses to stay small.
         </p>
@@ -298,13 +310,6 @@ function BlogPage({ slug }: { slug: string | null }) {
             </div>
             <h2>{post.title.zh}</h2>
             <p>{post.dek.zh}</p>
-            <div className="chip-row">
-              {post.tags.map((tag) => (
-                <span className="chip" key={tag}>
-                  {tag}
-                </span>
-              ))}
-            </div>
             <a className="text-link" href={`#blog/${post.slug}`}>
               Read article <ArrowUpRight size={16} />
             </a>
@@ -322,7 +327,7 @@ function BlogArticle({
 }: {
   post: (typeof blogPosts)[number];
   language: BlogLanguage;
-  setLanguage: (language: BlogLanguage) => void;
+  setLanguage: Dispatch<SetStateAction<BlogLanguage>>;
 }) {
   return (
     <article className="blog-article section-shell">
@@ -359,7 +364,7 @@ function BlogArticle({
 
 function BlogBlockView({ block }: { block: BlogBlock }) {
   if (block.type === "paragraph") {
-    return <p>{block.text}</p>;
+    return <p>{renderTextWithCitations(block.text)}</p>;
   }
 
   if (block.type === "heading") {
@@ -367,14 +372,16 @@ function BlogBlockView({ block }: { block: BlogBlock }) {
   }
 
   if (block.type === "equation") {
-    return <pre className="equation">{block.text}</pre>;
+    return <div className="equation" dangerouslySetInnerHTML={{ __html: renderEquation(block.text) }} />;
   }
 
   if (block.type === "references") {
     return (
       <ol className="reference-list">
-        {block.items.map((item) => (
-          <li key={item}>{item}</li>
+        {block.items.map((item, index) => (
+          <li id={`ref-${index + 1}`} key={item}>
+            {item}
+          </li>
         ))}
       </ol>
     );
@@ -399,6 +406,39 @@ function getRoute() {
   const hash = window.location.hash.replace(/^#\/?/, "");
   if (!hash || hash === "top") return "home";
   return hash;
+}
+
+function renderEquation(source: string) {
+  try {
+    return katex.renderToString(source, {
+      displayMode: true,
+      throwOnError: false,
+      strict: false,
+    });
+  } catch {
+    return source;
+  }
+}
+
+function renderTextWithCitations(text: string) {
+  const parts = text.split(/(\[\d+(?:[-,]\d+)*\])/g);
+
+  return parts.map((part, index) => {
+    const match = part.match(/^\[(\d+(?:[-,]\d+)*)\]$/);
+    if (!match) return part;
+
+    const firstRef = match[1].split(/[-,]/)[0];
+    return (
+      <sup className="citation" key={`${part}-${index}`}>
+        <button
+          type="button"
+          onClick={() => document.getElementById(`ref-${firstRef}`)?.scrollIntoView({ behavior: "smooth", block: "start" })}
+        >
+          {match[1]}
+        </button>
+      </sup>
+    );
+  });
 }
 
 function Section({

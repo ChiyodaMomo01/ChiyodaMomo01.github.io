@@ -214,18 +214,30 @@ h1 span {
     repeating-linear-gradient(90deg, rgba(13, 127, 131, 0.06), rgba(13, 127, 131, 0.06) 1px, transparent 1px, transparent 28px);
 }
 
+.hero-panel-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
 .hero-panel h2 {
-  max-width: 18ch;
+  max-width: 17ch;
   color: var(--deep);
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(1.65rem, 3vw, 2.25rem);
+  font-size: clamp(1.28rem, 2.2vw, 1.7rem);
   font-weight: 500;
-  line-height: 1.05;
+  line-height: 1.12;
 }
 
 .hero-panel p {
   color: #40514d;
   line-height: 1.65;
+}
+
+.blog-entry-panel {
+  background:
+    linear-gradient(160deg, rgba(255, 255, 255, 0.86), rgba(236, 242, 250, 0.76)),
+    repeating-linear-gradient(90deg, rgba(45, 95, 184, 0.055), rgba(45, 95, 184, 0.055) 1px, transparent 1px, transparent 28px);
 }
 
 .metrics-band {
@@ -543,10 +555,6 @@ time {
   font-weight: 800;
 }
 
-.blog-panel-link {
-  margin-left: 0.55rem;
-}
-
 .blog-shell,
 .blog-article {
   padding: clamp(3rem, 7vw, 5.5rem) 0 2rem;
@@ -661,8 +669,9 @@ time {
 }
 
 .blog-prose.zh-prose p {
+  font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", "Source Han Sans SC", "Hiragino Sans GB", sans-serif;
   font-size: 1.08rem;
-  line-height: 1.96;
+  line-height: 1.9;
 }
 
 .blog-prose h2 {
@@ -678,26 +687,56 @@ time {
   border: 1px solid rgba(13, 127, 131, 0.18);
   border-radius: 8px;
   margin: 1.15rem 0;
-  padding: 1rem;
+  padding: 0.9rem 1rem;
   background:
     linear-gradient(135deg, rgba(255, 255, 255, 0.86), rgba(232, 246, 242, 0.72)),
     repeating-linear-gradient(90deg, rgba(13, 127, 131, 0.05), rgba(13, 127, 131, 0.05) 1px, transparent 1px, transparent 30px);
   color: var(--deep);
-  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
-  font-size: 0.98rem;
-  line-height: 1.6;
-  white-space: pre;
+}
+
+.equation .katex-display {
+  margin: 0;
+}
+
+.citation {
+  margin-left: 0.1em;
+  font-size: 0.68em;
+  line-height: 0;
+  vertical-align: super;
+}
+
+.citation button {
+  border: 0;
+  padding: 0;
+  color: var(--teal);
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 850;
 }
 
 .reference-list {
+  counter-reset: refs;
+  list-style: none;
   padding-left: 1.4rem;
   color: #30423e;
 }
 
 .reference-list li {
+  position: relative;
+  counter-increment: refs;
   margin-bottom: 0.75rem;
   line-height: 1.62;
   overflow-wrap: anywhere;
+}
+
+.reference-list li::before {
+  position: absolute;
+  right: calc(100% + 0.35rem);
+  color: var(--teal);
+  content: "[" counter(refs) "]";
+  font-size: 0.82rem;
+  font-weight: 850;
 }
 
 .slide-gallery {
@@ -747,6 +786,7 @@ footer {
   .hero,
   .publication-card,
   .blog-article-header,
+  .hero-panel-grid,
   .service-grid,
   .misc-card,
   .visitor-card,
@@ -791,8 +831,4 @@ footer {
     font-size: clamp(2.2rem, 12vw, 3.35rem);
   }
 
-  .blog-panel-link {
-    margin-left: 0;
-    margin-top: 0.55rem;
-  }
 }
