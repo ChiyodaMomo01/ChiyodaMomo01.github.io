@@ -117,18 +117,28 @@ function HomePage() {
             </div>
             <div className="hero-panel-stack">
               <div className="hero-panel">
-                <p className="panel-label">Current focus</p>
-                <h2>Differentiable ocean modeling with machine learning</h2>
-                <a href={profile.neuralPom} className="text-link">
-                  Explore Neural-POM <ArrowUpRight size={16} />
-                </a>
+                <div className="hero-panel-content">
+                  <p className="panel-label">Current focus</p>
+                  <h2>Differentiable ocean modeling with machine learning</h2>
+                  <a href={profile.neuralPom} className="text-link">
+                    Explore Neural-POM <ArrowUpRight size={16} />
+                  </a>
+                </div>
+                <div className="hero-panel-icon" aria-hidden="true">
+                  <Microscope size={30} />
+                </div>
               </div>
               <div className="hero-panel blog-entry-panel">
-                <p className="panel-label">Research blog</p>
-                <h2>Notes on AI and scientific modeling</h2>
-                <a href="#blog" className="text-link blog-panel-link">
-                  Read Blog <PenLine size={16} />
-                </a>
+                <div className="hero-panel-content">
+                  <p className="panel-label">Research blog</p>
+                  <h2>Notes on AI and scientific modeling</h2>
+                  <a href="#blog" className="text-link blog-panel-link">
+                    Read Blog <PenLine size={16} />
+                  </a>
+                </div>
+                <div className="hero-panel-icon blog-panel-icon" aria-hidden="true">
+                  <PenLine size={30} />
+                </div>
               </div>
             </div>
           </aside>
@@ -303,7 +313,7 @@ function BlogPage({ slug }: { slug: string | null }) {
               <time>{post.date}</time>
               <span>{post.readTime}</span>
             </div>
-            <h2 className={language === "zh" ? "zh-title" : ""}>{post.title[language]}</h2>
+            <h2 className="blog-title">{post.title[language]}</h2>
             <p>{post.dek[language]}</p>
             <a className="text-link" href={`#blog/${post.slug}`}>
               Read article <ArrowUpRight size={16} />
@@ -330,7 +340,7 @@ function BlogArticle({
       <header className="blog-article-header">
         <div>
           <p className="eyebrow">Research Blog</p>
-          <h1 className={language === "zh" ? "zh-title" : ""}>{post.title[language]}</h1>
+          <h1 className="blog-title">{post.title[language]}</h1>
           <p>{post.dek[language]}</p>
           <div className="blog-card-meta">
             <time>{post.date}</time>
@@ -353,7 +363,7 @@ function BlogBlockView({ block }: { block: BlogBlock }) {
   }
 
   if (block.type === "heading") {
-    return <h2 className={/[\u4e00-\u9fff]/.test(block.text) ? "zh-title" : ""}>{block.text}</h2>;
+    return <h2 className="blog-title">{block.text}</h2>;
   }
 
   if (block.type === "equation") {
