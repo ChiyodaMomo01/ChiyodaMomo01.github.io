@@ -11,8 +11,11 @@ import {
   Microscope,
   Newspaper,
   Bike,
+  PenLine,
   Sparkles,
 } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
+import { blogPosts, type BlogBlock, type BlogLanguage } from "./data/blog";
 import { awards, experience, miscellaneous, navItems, news, profile, services, visitorMap } from "./data/profile";
 import { publications } from "./data/publications";
 
@@ -22,6 +25,16 @@ function splitPublicationTitle(title: string) {
 }
 
 function App() {
+  const [route, setRoute] = useState(() => getRoute());
+
+  useEffect(() => {
+    const handleHashChange = () => setRoute(getRoute());
+    window.addEventListener("hashchange", handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
+  }, []);
+
+  const blogSlug = route.startsWith("blog/") ? route.replace("blog/", "") : null;
+
   return (
     <>
       <header className="site-header">
@@ -38,7 +51,24 @@ function App() {
       </header>
 
       <main id="top">
-        <section className="hero section-shell" id="about">
+        {route === "blog" || blogSlug ? (
+          <BlogPage slug={blogSlug} />
+        ) : (
+          <HomePage />
+        )}
+      </main>
+
+      <footer>
+        <p>© {new Date().getFullYear()} Ruiqi Shu. Built for GitHub Pages.</p>
+      </footer>
+    </>
+  );
+}
+
+function HomePage() {
+  return (
+    <>
+      <section className="hero section-shell" id="about">
           <div className="hero-copy">
             <p className="eyebrow">AI for Earth System Science</p>
             <h1>
@@ -92,6 +122,9 @@ function App() {
               </p>
               <a href={profile.neuralPom} className="text-link">
                 Explore Neural-POM <ArrowUpRight size={16} />
+              </a>
+              <a href="#blog" className="text-link blog-panel-link">
+                Read Blog <PenLine size={16} />
               </a>
             </div>
           </aside>
@@ -232,13 +265,140 @@ function App() {
             </div>
           </div>
         </Section>
-      </main>
-
-      <footer>
-        <p>© {new Date().getFullYear()} Ruiqi Shu. Built for GitHub Pages.</p>
-      </footer>
     </>
   );
+}
+
+function BlogPage({ slug }: { slug: string | null }) {
+  const [language, setLanguage] = useState<BlogLanguage>("zh");
+  const activePost = useMemo(() => {
+    if (!slug) return null;
+    return blogPosts.find((post) => post.slug === slug) ?? null;
+  }, [slug]);
+
+  if (activePost) {
+    return <BlogArticle post={activePost} language={language} setLanguage={setLanguage} />;
+  }
+
+  return (
+    <section className="blog-shell section-shell">
+      <div className="blog-hero">
+        <p className="eyebrow">Research Blog</p>
+        <h1>Notes on AI, oceans, and scientific modeling</h1>
+        <p>
+          Longer-form notes on papers, experiments, research ideas, and the occasional question that refuses to stay small.
+        </p>
+      </div>
+      <div className="blog-list">
+        {blogPosts.map((post) => (
+          <article className="blog-card" key={post.slug}>
+            <div className="blog-card-meta">
+              <time>{post.date}</time>
+              <span>{post.readTime}</span>
+            </div>
+            <h2>{post.title.zh}</h2>
+            <p>{post.dek.zh}</p>
+            <div className="chip-row">
+              {post.tags.map((tag) => (
+                <span className="chip" key={tag}>
+                  {tag}
+                </span>
+              ))}
+            </div>
+            <a className="text-link" href={`#blog/${post.slug}`}>
+              Read article <ArrowUpRight size={16} />
+            </a>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function BlogArticle({
+  post,
+  language,
+  setLanguage,
+}: {
+  post: (typeof blogPosts)[number];
+  language: BlogLanguage;
+  setLanguage: (language: BlogLanguage) => void;
+}) {
+  return (
+    <article className="blog-article section-shell">
+      <a className="blog-back" href="#blog">
+        Back to blog
+      </a>
+      <header className="blog-article-header">
+        <div>
+          <p className="eyebrow">Research Blog</p>
+          <h1>{post.title[language]}</h1>
+          <p>{post.dek[language]}</p>
+          <div className="blog-card-meta">
+            <time>{post.date}</time>
+            <span>{post.readTime}</span>
+          </div>
+        </div>
+        <div className="language-toggle" aria-label="Blog language">
+          <button className={language === "zh" ? "active" : ""} onClick={() => setLanguage("zh")} type="button">
+            中文
+          </button>
+          <button className={language === "en" ? "active" : ""} onClick={() => setLanguage("en")} type="button">
+            English
+          </button>
+        </div>
+      </header>
+      <div className={`blog-prose ${language === "zh" ? "zh-prose" : ""}`}>
+        {post.content[language].map((block, index) => (
+          <BlogBlockView block={block} key={`${block.type}-${index}`} />
+        ))}
+      </div>
+    </article>
+  );
+}
+
+function BlogBlockView({ block }: { block: BlogBlock }) {
+  if (block.type === "paragraph") {
+    return <p>{block.text}</p>;
+  }
+
+  if (block.type === "heading") {
+    return <h2>{block.text}</h2>;
+  }
+
+  if (block.type === "equation") {
+    return <pre className="equation">{block.text}</pre>;
+  }
+
+  if (block.type === "references") {
+    return (
+      <ol className="reference-list">
+        {block.items.map((item) => (
+          <li key={item}>{item}</li>
+        ))}
+      </ol>
+    );
+  }
+
+  return (
+    <div className="slide-gallery">
+      {Array.from({ length: block.count }, (_, index) => {
+        const page = String(index + 1).padStart(2, "0");
+        return (
+          <figure key={page}>
+            <img src={`${block.basePath}/page_${page}.png`} alt={`PPT page ${index + 1}`} loading="lazy" />
+            <figcaption>PPT page {index + 1}</figcaption>
+          </figure>
+        );
+      })}
+    </div>
+  );
+}
+
+function getRoute() {
+  const hash = window.location.hash.replace(/^#\/?/, "");
+  if (!hash || hash === "top") return "home";
+  return hash;
 }
 
 function Section({

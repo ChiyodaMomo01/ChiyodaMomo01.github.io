@@ -29,6 +29,7 @@ export const profile = {
 
 export const navItems = [
   ["About", "about"],
+  ["Blog", "blog"],
   ["News", "news"],
   ["Publications", "publications"],
   ["Awards", "awards"],
