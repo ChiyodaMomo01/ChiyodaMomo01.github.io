@@ -115,14 +115,10 @@ function HomePage() {
             <div className="portrait-card">
               <img src={profile.photo} alt="Portrait of Ruiqi Shu" />
             </div>
-            <div className="hero-panel-grid">
+            <div className="hero-panel-stack">
               <div className="hero-panel">
                 <p className="panel-label">Current focus</p>
                 <h2>Differentiable ocean modeling with machine learning</h2>
-                <p>
-                  I am actively recruiting and looking for collaborators interested in coupling a full differentiable ocean
-                  numerical model with machine learning.
-                </p>
                 <a href={profile.neuralPom} className="text-link">
                   Explore Neural-POM <ArrowUpRight size={16} />
                 </a>
@@ -130,13 +126,9 @@ function HomePage() {
               <div className="hero-panel blog-entry-panel">
                 <p className="panel-label">Research blog</p>
                 <h2>Notes on AI and scientific modeling</h2>
-                <p>
-                  Reading notes, technical reflections, and longer thoughts on AI4Science, ocean modeling, and scientific
-                  machine learning.
-                </p>
-              <a href="#blog" className="text-link blog-panel-link">
-                Read Blog <PenLine size={16} />
-              </a>
+                <a href="#blog" className="text-link blog-panel-link">
+                  Read Blog <PenLine size={16} />
+                </a>
               </div>
             </div>
           </aside>
@@ -289,17 +281,20 @@ function BlogPage({ slug }: { slug: string | null }) {
   }, [slug]);
 
   if (activePost) {
-    return <BlogArticle post={activePost} language={language} setLanguage={setLanguage} />;
+    return <BlogArticle post={activePost} language={language} />;
   }
 
   return (
     <section className="blog-shell section-shell">
-      <div className="blog-hero">
-        <p className="eyebrow">Research Blog</p>
-        <h1>Notes on AI and scientific modeling</h1>
-        <p>
-          Longer-form notes on papers, experiments, research ideas, and the occasional question that refuses to stay small.
-        </p>
+      <div className="blog-hero blog-hero-with-toggle">
+        <div>
+          <p className="eyebrow">Research Blog</p>
+          <h1>Notes on AI and scientific modeling</h1>
+          <p>
+            Longer-form notes on papers, experiments, research ideas, and the occasional question that refuses to stay small.
+          </p>
+        </div>
+        <LanguageToggle language={language} setLanguage={setLanguage} />
       </div>
       <div className="blog-list">
         {blogPosts.map((post) => (
@@ -308,8 +303,8 @@ function BlogPage({ slug }: { slug: string | null }) {
               <time>{post.date}</time>
               <span>{post.readTime}</span>
             </div>
-            <h2>{post.title.zh}</h2>
-            <p>{post.dek.zh}</p>
+            <h2 className={language === "zh" ? "zh-title" : ""}>{post.title[language]}</h2>
+            <p>{post.dek[language]}</p>
             <a className="text-link" href={`#blog/${post.slug}`}>
               Read article <ArrowUpRight size={16} />
             </a>
@@ -323,11 +318,9 @@ function BlogPage({ slug }: { slug: string | null }) {
 function BlogArticle({
   post,
   language,
-  setLanguage,
 }: {
   post: (typeof blogPosts)[number];
   language: BlogLanguage;
-  setLanguage: Dispatch<SetStateAction<BlogLanguage>>;
 }) {
   return (
     <article className="blog-article section-shell">
@@ -337,20 +330,12 @@ function BlogArticle({
       <header className="blog-article-header">
         <div>
           <p className="eyebrow">Research Blog</p>
-          <h1>{post.title[language]}</h1>
+          <h1 className={language === "zh" ? "zh-title" : ""}>{post.title[language]}</h1>
           <p>{post.dek[language]}</p>
           <div className="blog-card-meta">
             <time>{post.date}</time>
             <span>{post.readTime}</span>
           </div>
-        </div>
-        <div className="language-toggle" aria-label="Blog language">
-          <button className={language === "zh" ? "active" : ""} onClick={() => setLanguage("zh")} type="button">
-            中文
-          </button>
-          <button className={language === "en" ? "active" : ""} onClick={() => setLanguage("en")} type="button">
-            English
-          </button>
         </div>
       </header>
       <div className={`blog-prose ${language === "zh" ? "zh-prose" : ""}`}>
@@ -364,11 +349,11 @@ function BlogArticle({
 
 function BlogBlockView({ block }: { block: BlogBlock }) {
   if (block.type === "paragraph") {
-    return <p>{renderTextWithCitations(block.text)}</p>;
+    return <p>{renderRichText(block.text)}</p>;
   }
 
   if (block.type === "heading") {
-    return <h2>{block.text}</h2>;
+    return <h2 className={/[\u4e00-\u9fff]/.test(block.text) ? "zh-title" : ""}>{block.text}</h2>;
   }
 
   if (block.type === "equation") {
@@ -439,6 +424,58 @@ function renderTextWithCitations(text: string) {
       </sup>
     );
   });
+}
+
+function LanguageToggle({
+  language,
+  setLanguage,
+}: {
+  language: BlogLanguage;
+  setLanguage: Dispatch<SetStateAction<BlogLanguage>>;
+}) {
+  return (
+    <div className="language-toggle" aria-label="Blog language">
+      <button className={language === "zh" ? "active" : ""} onClick={() => setLanguage("zh")} type="button">
+        中文
+      </button>
+      <button className={language === "en" ? "active" : ""} onClick={() => setLanguage("en")} type="button">
+        English
+      </button>
+    </div>
+  );
+}
+
+function renderRichText(text: string) {
+  const parts = text.split(/(\\\([^)]+\\\)|\[\d+(?:[-,]\d+)*\])/g);
+
+  return parts.map((part, index) => {
+    if (!part) return null;
+
+    const mathMatch = part.match(/^\\\((.+)\\\)$/);
+    if (mathMatch) {
+      return (
+        <span
+          className="inline-math"
+          dangerouslySetInnerHTML={{ __html: renderInlineEquation(mathMatch[1]) }}
+          key={`${part}-${index}`}
+        />
+      );
+    }
+
+    return renderTextWithCitations(part);
+  });
+}
+
+function renderInlineEquation(source: string) {
+  try {
+    return katex.renderToString(source, {
+      displayMode: false,
+      throwOnError: false,
+      strict: false,
+    });
+  } catch {
+    return source;
+  }
 }
 
 function Section({

@@ -59,7 +59,7 @@ export const blogPosts: BlogPost[] = [
         },
         {
           type: "paragraph",
-          text: "如果把某一时刻的海洋状态记作 x_t，它可以粗略理解为一个很高维的向量，里面装着不同空间位置、不同深度、不同变量的信息。预测问题最简单的写法，就是从当前状态走到下一时刻：",
+          text: "如果把某一时刻的海洋状态记作 \\(\\mathbf{x}_t\\)，它可以粗略理解为一个很高维的向量，里面装着不同空间位置、不同深度、不同变量的信息。预测问题最简单的写法，就是从当前状态走到下一时刻：",
         },
         { type: "equation", text: "\\mathbf{x}_{t+\\Delta t}=\\mathcal{F}(\\mathbf{x}_t,t)" },
         {
@@ -76,7 +76,7 @@ export const blogPosts: BlogPost[] = [
         {
           type: "paragraph",
           text:
-            "这里的 N_theta 是神经网络，theta 是需要从数据中学习的参数。它的吸引力在于推理快，表达能力强，也比较容易处理高维变量之间的复杂关系。但做长期海洋预测时，只看单步误差往往不够。模型每往前走一步，都会把自己上一步的输出再喂回去。短期看起来很小的偏差，可能会在滚动预测中逐渐扩散。大气参数化领域很早就发现，离线指标好，并不自动意味着接入动力系统以后也稳定 [3,4]。海洋次网格参数化的基准研究也提示了类似问题，真正难的是在线耦合后的稳定性和泛化能力 [5]。",
+            "这里的 \\(\\mathcal{N}_{\\theta}\\) 是神经网络，\\(\\theta\\) 是需要从数据中学习的参数。它的吸引力在于推理快，表达能力强，也比较容易处理高维变量之间的复杂关系。但做长期海洋预测时，只看单步误差往往不够。模型每往前走一步，都会把自己上一步的输出再喂回去。短期看起来很小的偏差，可能会在滚动预测中逐渐扩散。大气参数化领域很早就发现，离线指标好，并不自动意味着接入动力系统以后也稳定 [3,4]。海洋次网格参数化的基准研究也提示了类似问题，真正难的是在线耦合后的稳定性和泛化能力 [5]。",
         },
         {
           type: "paragraph",
@@ -87,7 +87,7 @@ export const blogPosts: BlogPost[] = [
         {
           type: "paragraph",
           text:
-            "这里 M_phys 表示已有物理模式中的趋势项，N_theta 可以表示可学习的闭合项、残差修正项或参数化项，p 可以包含外强迫、局地梯度、地形或其他辅助信息。Bolton 和 Zanna 早期关于海洋数据推断和次网格参数化的工作，已经很好地展示了深度学习进入海洋动力问题的方式 [6]；后续随机动量强迫、中尺度涡旋参数化和理想化海洋基准等研究，则把这个问题继续往模式嵌入和在线评估方向推进 [5,7]。",
+            "这里 \\(\\mathcal{M}_{phys}\\) 表示已有物理模式中的趋势项，\\(\\mathcal{N}_{\\theta}\\) 可以表示可学习的闭合项、残差修正项或参数化项，\\(\\mathbf{p}\\) 可以包含外强迫、局地梯度、地形或其他辅助信息。Bolton 和 Zanna 早期关于海洋数据推断和次网格参数化的工作，已经很好地展示了深度学习进入海洋动力问题的方式 [6]；后续随机动量强迫、中尺度涡旋参数化和理想化海洋基准等研究，则把这个问题继续往模式嵌入和在线评估方向推进 [5,7]。",
         },
         {
           type: "paragraph",
@@ -102,7 +102,7 @@ export const blogPosts: BlogPost[] = [
         {
           type: "paragraph",
           text:
-            "这里 y_t 可以是目标物理倾向、残差项或高分辨率资料给出的参考量。这个目标很清楚，就是让网络在当前样本上拟合得更好。问题在于，模式真正运行时面对的是多步反馈。一个参数化模块离线看起来很好，接进动力核心以后，仍然可能引起漂移、不稳定或过平滑。这一点在大气和海洋的很多研究里都已经反复出现 [3-5]。",
+            "这里 \\(\\mathbf{y}_t\\) 可以是目标物理倾向、残差项或高分辨率资料给出的参考量。这个目标很清楚，就是让网络在当前样本上拟合得更好。问题在于，模式真正运行时面对的是多步反馈。一个参数化模块离线看起来很好，接进动力核心以后，仍然可能引起漂移、不稳定或过平滑。这一点在大气和海洋的很多研究里都已经反复出现 [3-5]。",
         },
         {
           type: "paragraph",
@@ -112,7 +112,7 @@ export const blogPosts: BlogPost[] = [
         {
           type: "paragraph",
           text:
-            "这里 x_{t+k}^theta 是带有神经网络参数的混合模型滚动到第 k 步后的状态，H 可以表示从模式状态到可观测变量的映射，R 则可以放入一些物理约束或正则项。这件事听起来只是把损失函数写长了一点，实际要求很高。因为未来几步的误差要传回神经网络参数，动力核心本身就要能参与反向传播。换句话说，物理推进不只是外部模拟器，还要成为训练图的一部分。",
+            "这里 \\(\\mathbf{x}_{t+k}^{\\theta}\\) 是带有神经网络参数的混合模型滚动到第 \\(k\\) 步后的状态，\\(\\mathcal{H}\\) 可以表示从模式状态到可观测变量的映射，\\(\\mathcal{R}\\) 则可以放入一些物理约束或正则项。这件事听起来只是把损失函数写长了一点，实际要求很高。因为未来几步的误差要传回神经网络参数，动力核心本身就要能参与反向传播。换句话说，物理推进不只是外部模拟器，还要成为训练图的一部分。",
         },
         {
           type: "paragraph",
@@ -165,7 +165,7 @@ export const blogPosts: BlogPost[] = [
           text:
             "To talk about ocean prediction, it is useful to begin with a simple question: what exactly are we trying to predict, and why is it so difficult? The ocean is not a passive background of the climate system. It participates in the exchange of energy, momentum, freshwater, and carbon, and it affects weather, climate, and many concrete decisions. In models we see variables such as temperature, salinity, velocity, and sea-surface height. At a deeper level, we are trying to understand a multiscale, strongly nonlinear, and sparsely observed system in a computable way. Similar points have been repeatedly emphasized in recent reviews on machine learning, ocean observations, theory, and numerical simulation [1].",
         },
-        { type: "paragraph", text: "If the ocean state at time t is denoted by x_t, it can be viewed as a high-dimensional vector containing variables at different locations, depths, and physical fields. The simplest form of the prediction problem is to advance the current state to the next time:" },
+        { type: "paragraph", text: "If the ocean state at time \\(t\\) is denoted by \\(\\mathbf{x}_t\\), it can be viewed as a high-dimensional vector containing variables at different locations, depths, and physical fields. The simplest form of the prediction problem is to advance the current state to the next time:" },
         { type: "equation", text: "\\mathbf{x}_{t+\\Delta t}=\\mathcal{F}(\\mathbf{x}_t,t)" },
         {
           type: "paragraph",
@@ -181,7 +181,7 @@ export const blogPosts: BlogPost[] = [
         {
           type: "paragraph",
           text:
-            "Here N_theta is a neural network and theta denotes learnable parameters. The appeal is fast inference, strong expressiveness, and the ability to handle complex relationships among high-dimensional variables. For long-term ocean prediction, however, one-step error is not enough. Each rollout feeds the model output back as the next input. A small short-term bias may gradually spread during autoregressive prediction. Atmospheric parameterization studies have long shown that good offline scores do not automatically imply stability when the model is coupled back into a dynamical system [3,4]. Benchmarks for ocean subgrid parameterization point to a similar issue: the real difficulty lies in stability and generalization after online coupling [5].",
+            "Here \\(\\mathcal{N}_{\\theta}\\) is a neural network and \\(\\theta\\) denotes learnable parameters. The appeal is fast inference, strong expressiveness, and the ability to handle complex relationships among high-dimensional variables. For long-term ocean prediction, however, one-step error is not enough. Each rollout feeds the model output back as the next input. A small short-term bias may gradually spread during autoregressive prediction. Atmospheric parameterization studies have long shown that good offline scores do not automatically imply stability when the model is coupled back into a dynamical system [3,4]. Benchmarks for ocean subgrid parameterization point to a similar issue: the real difficulty lies in stability and generalization after online coupling [5].",
         },
         {
           type: "paragraph",
@@ -192,7 +192,7 @@ export const blogPosts: BlogPost[] = [
         {
           type: "paragraph",
           text:
-            "Here M_phys is the tendency term from an existing physical model, N_theta may represent a learnable closure, residual correction, or parameterization, and p may include forcing, local gradients, topography, or other auxiliary information. Early work by Bolton and Zanna already showed how deep learning can enter ocean dynamics through data inference and subgrid parameterization [6]. Later studies on stochastic momentum forcing, mesoscale eddy parameterization, and idealized ocean benchmarks pushed the problem further toward model embedding and online evaluation [5,7].",
+            "Here \\(\\mathcal{M}_{phys}\\) is the tendency term from an existing physical model, \\(\\mathcal{N}_{\\theta}\\) may represent a learnable closure, residual correction, or parameterization, and \\(\\mathbf{p}\\) may include forcing, local gradients, topography, or other auxiliary information. Early work by Bolton and Zanna already showed how deep learning can enter ocean dynamics through data inference and subgrid parameterization [6]. Later studies on stochastic momentum forcing, mesoscale eddy parameterization, and idealized ocean benchmarks pushed the problem further toward model embedding and online evaluation [5,7].",
         },
         {
           type: "paragraph",
@@ -204,14 +204,14 @@ export const blogPosts: BlogPost[] = [
         {
           type: "paragraph",
           text:
-            "Here y_t may be a target physical tendency, a residual term, or a reference from high-resolution data. The objective is clear: fit the current sample. The problem is that a real model run faces multi-step feedback. A parameterization module that looks good offline may still cause drift, instability, or oversmoothing after it is coupled into the dynamical core. This has appeared repeatedly in both atmosphere and ocean studies [3-5].",
+            "Here \\(\\mathbf{y}_t\\) may be a target physical tendency, a residual term, or a reference from high-resolution data. The objective is clear: fit the current sample. The problem is that a real model run faces multi-step feedback. A parameterization module that looks good offline may still cause drift, instability, or oversmoothing after it is coupled into the dynamical core. This has appeared repeatedly in both atmosphere and ocean studies [3-5].",
         },
         { type: "paragraph", text: "Online training lets the hybrid model roll out during training. We do not only ask whether the next step is accurate; we also ask whether the model remains stable several steps later. Coupled online learning has been proposed as one path to reducing instabilities and biases in neural network parameterizations [8]. A simplified objective is:" },
         { type: "equation", text: "\\mathcal{L}_{online}(\\theta)=\\sum_{k=1}^{K}\\left\\|\\mathcal{H}(\\mathbf{x}_{t+k}^{\\theta})-\\mathbf{y}_{t+k}\\right\\|_2^2+\\lambda\\mathcal{R}(\\mathbf{x}_{t:t+K}^{\\theta})" },
         {
           type: "paragraph",
           text:
-            "Here x_{t+k}^theta is the state after k steps of a hybrid model with neural parameters, H maps model states to observable variables, and R can contain physical constraints or regularization. This looks like simply extending the loss over time, but it is technically demanding. Future errors must propagate back to neural parameters, meaning the dynamical core itself must participate in backpropagation. The physical solver is no longer an external simulator; it becomes part of the training graph.",
+            "Here \\(\\mathbf{x}_{t+k}^{\\theta}\\) is the state after \\(k\\) steps of a hybrid model with neural parameters, \\(\\mathcal{H}\\) maps model states to observable variables, and \\(\\mathcal{R}\\) can contain physical constraints or regularization. This looks like simply extending the loss over time, but it is technically demanding. Future errors must propagate back to neural parameters, meaning the dynamical core itself must participate in backpropagation. The physical solver is no longer an external simulator; it becomes part of the training graph.",
         },
         {
           type: "paragraph",
