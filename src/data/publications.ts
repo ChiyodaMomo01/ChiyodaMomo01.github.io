@@ -49,10 +49,10 @@ export const publications: Publication[] = [
   {
     title: "Ocean-E2E: Hybrid Physics-Based and Data-Driven Global Forecasting of Extreme Marine Heatwaves with End-to-End Neural Assimilation [KDD 2026 AI4Sciences Track, CCF-A]",
     authors: "Ruiqi Shu, Yuan Gao, Hao Wu, Ruijian Gou, Kun Wang, Yanfei Xiang, Fan Xu, Qingsong Wen, Xiaomeng Huang",
-    venue: "Accepted by KDD 2026 AI4Sciences Track (CCF-A)",
+    venue: "Accepted by KDD 2026 AI4Sciences Track (CCF-A), Oral Presentation (top 6.1%)",
     date: "2026",
     role: "First author",
-    summary: "Hybrid physics-based and data-driven forecasting of extreme marine heatwaves with end-to-end neural assimilation.",
+    summary: "Hybrid physics-based and data-driven forecasting of extreme marine heatwaves with end-to-end neural assimilation, selected as an oral presentation (top 6.1%).",
     links: [{ label: "arXiv", url: "https://arxiv.org/abs/2505.22071" }],
     image: "/images/publications/ocean-e2e.png",
   },

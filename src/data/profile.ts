@@ -43,7 +43,7 @@ export const news: NewsItem[] = [
   {
     date: "May 16, 2026",
     label: "KDD 2026",
-    text: "Two papers were accepted to KDD 2026: Ocean-E2E to the AI4Sciences Track as first author, and An Exterior-Embedding Neural Operator Framework for Preserving Conservation Laws to the Research Track as co-author. Congratulations to all collaborators.",
+    text: "Two papers were accepted to KDD 2026: Ocean-E2E to the AI4Sciences Track as first author and selected as an oral presentation (top 6.1%), and An Exterior-Embedding Neural Operator Framework for Preserving Conservation Laws to the Research Track as co-author. Congratulations to all collaborators.",
   },
   {
     date: "May 2026",
