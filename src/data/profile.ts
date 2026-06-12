@@ -36,7 +36,6 @@ export const navItems = [
   ["Experience", "experience"],
   ["Service", "service"],
   ["Miscellaneous", "miscellaneous"],
-  ["Visitors", "visitors"],
 ] as const;
 
 export const news: NewsItem[] = [
@@ -133,13 +132,4 @@ export const services = {
 export const miscellaneous = {
   text: "I am also a road cycling enthusiast.",
   bikeImage: "/images/miscellaneous/road-bike.png",
-};
-
-export const visitorMap = {
-  provider: "MapMyVisitors",
-  linkUrl: "https://mapmyvisitors.com/web/1c4bu",
-  imageUrl: "https://mapmyvisitors.com/map.png?d=F88uieSfA7NOO5A0OAHGaI14pJGmrc3xg-fyPCxT3Ww&cl=ffffff&w=640",
-  imageSrcSet:
-    "https://mapmyvisitors.com/map.png?d=F88uieSfA7NOO5A0OAHGaI14pJGmrc3xg-fyPCxT3Ww&cl=ffffff&w=640 1x, https://mapmyvisitors.com/map.png?d=F88uieSfA7NOO5A0OAHGaI14pJGmrc3xg-fyPCxT3Ww&cl=ffffff&w=960 2x",
-  note: "A live visitor map plots approximate visitor locations using IP-based geolocation.",
 };

@@ -5,29 +5,38 @@ import {
   Download,
   Github,
   GraduationCap,
-  Globe2,
   Mail,
   MapPin,
   Microscope,
+  Moon,
   Newspaper,
   Bike,
   PenLine,
   Sparkles,
+  Sun,
 } from "lucide-react";
 import katex from "katex";
 import "katex/dist/katex.min.css";
 import { type Dispatch, type SetStateAction, useEffect, useMemo, useState } from "react";
 import { blogPosts, type BlogBlock, type BlogLanguage } from "./data/blog";
-import { awards, experience, miscellaneous, navItems, news, profile, services, visitorMap } from "./data/profile";
+import { awards, experience, miscellaneous, navItems, news, profile, services } from "./data/profile";
 import { publications } from "./data/publications";
+
+type Theme = "dark" | "light";
 
 function splitPublicationTitle(title: string) {
   const match = title.match(/^(.*)\s+\[([^\]]+)\]$/);
   return match ? { title: match[1], venue: match[2] } : { title };
 }
 
+function getInitialTheme(): Theme {
+  if (typeof window === "undefined") return "dark";
+  return window.localStorage.getItem("theme") === "light" ? "light" : "dark";
+}
+
 function App() {
   const [route, setRoute] = useState(() => getRoute());
+  const [theme, setTheme] = useState<Theme>(() => getInitialTheme());
 
   useEffect(() => {
     const handleHashChange = () => setRoute(getRoute());
@@ -35,7 +44,13 @@ function App() {
     return () => window.removeEventListener("hashchange", handleHashChange);
   }, []);
 
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    window.localStorage.setItem("theme", theme);
+  }, [theme]);
+
   const blogSlug = route.startsWith("blog/") ? route.replace("blog/", "") : null;
+  const nextTheme = theme === "dark" ? "light" : "dark";
 
   return (
     <>
@@ -43,13 +58,24 @@ function App() {
         <a className="brand" href="#top" aria-label="Ruiqi Shu home">
           RS
         </a>
-        <nav className="nav-links" aria-label="Section navigation">
-          {navItems.map(([label, id]) => (
-            <a href={`#${id}`} key={id}>
-              {label}
-            </a>
-          ))}
-        </nav>
+        <div className="header-actions">
+          <nav className="nav-links" aria-label="Section navigation">
+            {navItems.map(([label, id]) => (
+              <a href={`#${id}`} key={id}>
+                {label}
+              </a>
+            ))}
+          </nav>
+          <button
+            className="theme-toggle"
+            type="button"
+            aria-label={`Switch to ${nextTheme} mode`}
+            title={`Switch to ${nextTheme} mode`}
+            onClick={() => setTheme(nextTheme)}
+          >
+            {theme === "dark" ? <Sun size={17} /> : <Moon size={17} />}
+          </button>
+        </div>
       </header>
 
       <main id="top">
@@ -256,22 +282,6 @@ function HomePage() {
           </div>
         </Section>
 
-        <Section id="visitors" label="Visitor Map" icon={<Globe2 size={22} />}>
-          <div className="visitor-card">
-            <div className="visitor-map-frame">
-              <a href={visitorMap.linkUrl} target="_blank" rel="noreferrer" aria-label="Open visitor map details">
-                <img src={visitorMap.imageUrl} srcSet={visitorMap.imageSrcSet} alt="World map of homepage visitors" />
-              </a>
-            </div>
-            <div className="visitor-copy">
-              <h3>Global Visitors</h3>
-              <p>{visitorMap.note}</p>
-              <a href={visitorMap.linkUrl} target="_blank" rel="noreferrer">
-                View tracker details <ArrowUpRight size={14} />
-              </a>
-            </div>
-          </div>
-        </Section>
     </>
   );
 }
