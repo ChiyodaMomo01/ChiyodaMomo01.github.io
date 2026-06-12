@@ -72,21 +72,13 @@ function HomePage() {
     <>
       <section className="hero section-shell" id="about">
           <div className="hero-copy">
-            <p className="eyebrow">AI for Earth System Science</p>
+            <p className="eyebrow">{profile.title}</p>
             <h1>
               {profile.name}
               <span>{profile.chineseName}</span>
             </h1>
-            <p className="hero-title">{profile.title}</p>
-            <p className="hero-text">
-              I am a PhD student in the Department of Earth System Science at Tsinghua University and a research intern at the
-              Shanghai Academy of AI for Science. I received my BSc from Chongben Honors College, Ocean University of China in
-              2024.
-            </p>
-            <p className="hero-text">
-              My research focuses on combining artificial intelligence with physics to understand, predict, and reason about
-              complex geophysical systems. In particular, I work on differentiable formulations of traditional geophysical
-              solvers, especially atmospheric and oceanic models, and their deep integration with neural networks.
+            <p className="hero-text hero-lede">
+              I build neural-physics models for oceans, weather, and Earth systems, with differentiable solvers at the center.
             </p>
             <div className="hero-actions">
               <a className="button primary" href={`mailto:${profile.email}`}>
@@ -110,6 +102,7 @@ function HomePage() {
                 中文 CV
               </a>
             </div>
+            <p className="hero-note">{profile.affiliation}</p>
           </div>
           <aside className="hero-side" aria-label="Portrait and research highlight">
             <div className="portrait-card">
@@ -121,7 +114,7 @@ function HomePage() {
                   <p className="panel-label">Current focus</p>
                   <h2>Differentiable ocean modeling with machine learning</h2>
                   <a href={profile.neuralPom} className="text-link">
-                    Explore Neural-POM <ArrowUpRight size={16} />
+                    Neural-POM <ArrowUpRight size={16} />
                   </a>
                 </div>
                 <div className="hero-panel-icon" aria-hidden="true">
@@ -133,7 +126,7 @@ function HomePage() {
                   <p className="panel-label">Research blog</p>
                   <h2>Notes on AI and scientific modeling</h2>
                   <a href="#blog" className="text-link blog-panel-link">
-                    Read Blog <PenLine size={16} />
+                    Blog <PenLine size={16} />
                   </a>
                 </div>
                 <div className="hero-panel-icon blog-panel-icon" aria-hidden="true">
