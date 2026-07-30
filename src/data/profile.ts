@@ -18,6 +18,7 @@ export const profile = {
   affiliation: "Department of Earth System Science, Tsinghua University",
   location: "Beijing, China",
   email: "srq24@mails.tsinghua.edu.cn",
+  wechat: "shuruiqi011231",
   github: "https://github.com/ChiyodaMomo01",
   scholar: "https://scholar.google.com/citations?user=WKBB3r0AAAAJ&hl=zh-CN",
   scholarStatus: "Google Scholar citations: 103, h-index: 5, i10-index: 4",

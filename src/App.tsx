@@ -6,6 +6,7 @@ import {
   Github,
   GraduationCap,
   Mail,
+  MessageCircle,
   MapPin,
   Microscope,
   Moon,
@@ -111,6 +112,10 @@ function HomePage() {
                 <Mail size={18} />
                 Email
               </a>
+              <span className="button contact-chip" aria-label={`WeChat ${profile.wechat}`}>
+                <MessageCircle size={18} />
+                WeChat: {profile.wechat}
+              </span>
               <a className="button" href={profile.github}>
                 <Github size={18} />
                 GitHub
