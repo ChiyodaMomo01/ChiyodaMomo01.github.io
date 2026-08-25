@@ -33,6 +33,7 @@ export const navItems = [
   ["Blog", "blog"],
   ["News", "news"],
   ["Publications", "publications"],
+  ["Presentations", "presentations"],
   ["Awards", "awards"],
   ["Experience", "experience"],
   ["Service", "service"],
@@ -122,6 +123,36 @@ export const experience: TimelineItem[] = [
     title: "BSc in Marine Science (Oceanography)",
     place: "Chongben Honors College, Ocean University of China",
     detail: "Undergraduate training in oceanography and geophysical fluid dynamics.",
+  },
+];
+
+export const presentations: TimelineItem[] = [
+  {
+    date: "Aug 2026",
+    title: "KDD 2026 · Oral Presentation",
+    place: "Jeju, South Korea",
+    detail:
+      "Presented first-author work Ocean-E2E: Hybrid Physics-Based and Data-Driven Global Forecasting of Extreme Marine Heatwaves with End-to-End Neural Assimilation in the AI4Sciences Track.",
+  },
+  {
+    date: "Jul 2026",
+    title: "ICML 2026 · Poster Presentation",
+    place: "Seoul, South Korea",
+    detail:
+      "Presented first-author work HybridOM: Hybrid Physics-Based and Data-Driven Global Ocean Modeling with Efficient Spatial Downscaling.",
+  },
+  {
+    date: "Jul 2025",
+    title: "ICML 2025 · Poster Presentation",
+    place: "Vancouver, Canada",
+    detail:
+      "Presented co-first-author work OneForecast: A Universal Framework for Global and Regional Weather Forecasting.",
+  },
+  {
+    date: "Dec 2024",
+    title: "AGU 2024 Fall Meeting · Conference Presentation",
+    place: "Washington, D.C., United States",
+    detail: "Presented A Scale-Aware Framework for Regional to Global Marine Heatwaves Forecast.",
   },
 ];
 

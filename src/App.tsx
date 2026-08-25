@@ -13,6 +13,7 @@ import {
   Newspaper,
   Bike,
   PenLine,
+  Presentation as PresentationIcon,
   Sparkles,
   Sun,
 } from "lucide-react";
@@ -20,7 +21,7 @@ import katex from "katex";
 import "katex/dist/katex.min.css";
 import { type Dispatch, type SetStateAction, useEffect, useMemo, useState } from "react";
 import { blogPosts, type BlogBlock, type BlogLanguage } from "./data/blog";
-import { awards, experience, miscellaneous, navItems, news, profile, services } from "./data/profile";
+import { awards, experience, miscellaneous, navItems, news, presentations, profile, services } from "./data/profile";
 import { publications } from "./data/publications";
 
 type Theme = "dark" | "light";
@@ -234,6 +235,10 @@ function HomePage() {
               );
             })}
           </div>
+        </Section>
+
+        <Section id="presentations" label="Presentations" icon={<PresentationIcon size={22} />}>
+          <Timeline items={presentations} />
         </Section>
 
         <Section id="awards" label="Awards" icon={<Award size={22} />}>
