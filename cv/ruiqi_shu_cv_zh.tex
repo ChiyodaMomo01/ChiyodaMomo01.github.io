@@ -1,6 +1,5 @@
 \documentclass[10pt,a4paper]{article}
-
-\usepackage[a4paper,margin=1.52cm,top=1.45cm,bottom=1.55cm]{geometry}
+\usepackage[a4paper,left=1.75cm,right=1.75cm,top=1.8cm,bottom=1.95cm,footskip=0.8cm]{geometry}
 \usepackage{fontspec}
 \usepackage{xeCJK}
 \usepackage{xcolor}
@@ -10,92 +9,77 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage{microtype}
 \usepackage{ragged2e}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
 
-\setmainfont[
-  Path=/usr/local/texlive/2024/texmf-dist/fonts/opentype/public/lm/,
-  UprightFont=lmroman10-regular.otf,
-  BoldFont=lmroman10-bold.otf,
-  ItalicFont=lmroman10-italic.otf,
-  BoldItalicFont=lmroman10-bolditalic.otf
-]{Latin Modern Roman}
-\setsansfont[
-  Path=/usr/local/texlive/2024/texmf-dist/fonts/opentype/public/lm/,
-  UprightFont=lmsans10-regular.otf,
-  BoldFont=lmsans10-bold.otf,
-  ItalicFont=lmsans10-oblique.otf,
-  BoldItalicFont=lmsans10-boldoblique.otf
-]{Latin Modern Sans}
-\setCJKmainfont{PingFang SC}
-\setCJKsansfont{PingFang SC}
+\setmainfont[Path=cv/fonts/,UprightFont=SourceSerif4-Regular.ttf,
+  BoldFont=SourceSerif4-Semibold.ttf,ItalicFont=SourceSerif4-Italic.ttf,
+  BoldItalicFont=SourceSerif4-Italic.ttf]{Source Serif 4}
+\setsansfont[Path=cv/fonts/,UprightFont=DMSans-Regular.ttf,
+  BoldFont=DMSans-Medium.ttf]{DM Sans}
+\setCJKmainfont[Script=Default,UprightFont=STKaitiSC-Bold,BoldFont=STKaitiSC-Black,ItalicFont=STKaitiSC-Bold]{Kaiti SC}
+\setCJKsansfont[Script=Default,UprightFont=STKaitiSC-Bold,BoldFont=STKaitiSC-Black]{Kaiti SC}
 
-\definecolor{accent}{HTML}{0B5D5A}
-\definecolor{textgray}{HTML}{444C4A}
-\definecolor{lightline}{HTML}{D9E4E1}
-
-\hypersetup{
-  colorlinks=true,
-  urlcolor=accent,
-  linkcolor=accent
-}
-
-\pagestyle{empty}
+\definecolor{paper}{HTML}{FCFAF7}
+\definecolor{ink}{HTML}{302B27}
+\definecolor{accent}{HTML}{80523F}
+\definecolor{secondary}{HTML}{58514B}
+\definecolor{muted}{HTML}{716960}
+\definecolor{line}{HTML}{E5DFD7}
+\pagecolor{paper}
+\color{ink}
+\hypersetup{colorlinks=true,urlcolor=accent,linkcolor=accent,pdfauthor={Ruiqi Shu},pdftitle={Ruiqi Shu | Academic CV}}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
-\setlist[itemize]{leftmargin=1.15em,itemsep=2pt,topsep=2pt,parsep=0pt}
-\setlist[enumerate]{leftmargin=1.55em,itemsep=5pt,topsep=3pt,parsep=0pt}
-
-\titleformat{\section}
-  {\large\bfseries\color{accent}\sffamily}
-  {}
-  {0pt}
-  {}
-  [\vspace{-0.35em}\color{lightline}\titlerule]
-\titlespacing*{\section}{0pt}{0.95em}{0.55em}
-
-\newcommand{\cvname}[1]{{\fontsize{28}{32}\selectfont\bfseries #1}}
-\newcommand{\cvsubtitle}[1]{{\large\color{textgray} #1}}
-\newcommand{\contactsep}{\quad{\color{lightline}\textbar}\quad}
+\renewcommand{\baselinestretch}{1.08}
+\AtBeginDocument{\RaggedRight}
+\setlength{\emergencystretch}{2em}
+\setlist[itemize]{leftmargin=3.35cm,itemsep=1.5pt,topsep=2.5pt,parsep=0pt,label=\textbullet}
+\setlist[enumerate]{leftmargin=0.65cm,itemsep=7pt,topsep=6pt,parsep=0pt}
+\titleformat{\section}{\fontsize{16}{20}\selectfont\bfseries}{}{0pt}{}[\vspace{3pt}\color{line}\titlerule]
+\titlespacing*{\section}{0pt}{10pt}{6pt}
+\newcommand{\contactsep}{\enspace{\color{line}\textbar}\enspace}
 \newcommand{\entry}[4]{%
-  \begin{tabularx}{\textwidth}{@{}Xr@{}}
-    \textbf{#1} & {\color{textgray}#2}\\
-    {\color{textgray}#3} & {\color{textgray}#4}
-  \end{tabularx}\vspace{2pt}
+  \par\begin{tabularx}{\textwidth}{@{}p{2.65cm}@{\hspace{0.4cm}}X@{}}
+    {\RaggedRight\sffamily\fontsize{8.6}{11}\selectfont\color{muted}#4} &
+    \begin{minipage}[t]{\linewidth}\RaggedRight\hyphenpenalty=10000\exhyphenpenalty=10000
+      {\fontsize{11}{13}\selectfont\bfseries #1\par}\vspace{3pt}
+      {\sffamily\fontsize{9}{11.6}\selectfont\color{secondary}#3\enspace{\color{muted}/ #2}\par}
+    \end{minipage}
+  \end{tabularx}\par\vspace{2pt}
 }
 \newcommand{\pubentry}[5]{%
-  \item \textbf{#1}\\
-  #2\\
-  \textit{#3}. {\color{accent}\textbf{#4}} #5
+  \item \begin{minipage}[t]{\linewidth}\RaggedRight\hyphenpenalty=10000\exhyphenpenalty=10000
+  {\fontsize{10.5}{12.5}\selectfont\bfseries #1\par}\vspace{3pt}
+  {\sffamily\fontsize{8.8}{11.5}\selectfont\color{secondary}#2\par}\vspace{3pt}
+  {\fontsize{9.3}{11.3}\selectfont\textit{#3}.\par}\vspace{2pt}
+  {\sffamily\fontsize{8.3}{10.8}\selectfont{\color{accent}#4}\enspace #5\par}
+  \end{minipage}
 }
-\newcommand{\role}[1]{\MakeUppercase{#1}.}
-
+\newcommand{\role}[1]{#1.}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancyfoot[L]{\sffamily\fontsize{8}{10}\selectfont\color{muted}舒睿骐\enspace / \enspace 2026年10月}
+\fancyfoot[R]{\sffamily\fontsize{8}{10}\selectfont\color{muted}\thepage\ / \pageref*{LastPage}}
 \begin{document}
-
-\begin{center}
-  \cvname{舒睿骐 (Ruiqi Shu)}\\[3pt]
-  \cvsubtitle{清华大学地球系统科学系博士生}\\[7pt]
-  \small
-  中国北京
-  \contactsep
-  \href{mailto:srq24@mails.tsinghua.edu.cn}{srq24@mails.tsinghua.edu.cn}
-  \contactsep
-  \href{https://github.com/ChiyodaMomo01}{GitHub: ChiyodaMomo01}\\[3pt]
-  \href{https://scholar.google.com/citations?user=WKBB3r0AAAAJ&hl=zh-CN}{Google Scholar}
-  \contactsep
-  \href{https://chiyodamomo01.github.io/}{chiyodamomo01.github.io}
-  \contactsep
-  \href{https://neural-pom.vercel.app/}{Neural-POM}
-\end{center}
-
-\vspace{0.25em}
-
+{\fontsize{36}{41}\selectfont\bfseries 舒睿骐}\quad{\fontsize{22}{29}\selectfont\color{secondary}Ruiqi Shu}\par
+\vspace{5pt}
+{\sffamily\fontsize{10.5}{14}\selectfont\color{secondary}清华大学地球系统科学系博士生}\par
+\vspace{7pt}
+{\sffamily\fontsize{8.7}{12}\selectfont\color{muted}
+中国北京\contactsep\href{mailto:srq24@mails.tsinghua.edu.cn}{srq24@mails.tsinghua.edu.cn}\contactsep\href{https://github.com/ChiyodaMomo01}{GitHub}\\[3pt]
+\href{https://chiyodamomo01.github.io/}{chiyodamomo01.github.io}\contactsep\href{https://scholar.google.com/citations?user=WKBB3r0AAAAJ&hl=zh-CN}{Google Scholar}\contactsep\href{https://neural-pom.vercel.app/}{Neural-POM}}\par
+\vspace{6pt}
 \section*{研究兴趣}
-我的研究方向包括地球系统科学人工智能、AI for Science、可微地球物理与海洋数值模式、神经网络--物理融合建模、时空预测、地球物理流体动力学、海洋热浪预测和海洋状态估计。我尤其关注如何将传统大气和海洋数值模式改造成可微系统，并与神经网络进行深度耦合。目前我也在开发 \href{https://neural-pom.vercel.app/}{Neural-POM}，探索完整可微海洋数值模式与机器学习的结合。
+我的研究聚焦机器学习与物理世界建模，尤其关注动力系统的建模、模拟与预测。具体兴趣包括可微数值求解器、物理与学习融合模型，以及具有物理一致性的世界模型。我希望结合数据中的规律、物理定律与数值计算方法，描述系统在不同空间与时间尺度上的演化。大气、海洋等地球系统为这些研究提供了具体的应用场景。
 
 \section*{教育经历}
-\entry{清华大学}{中国北京}{地球系统科学系，大气科学博士生}{2024年9月 -- 至今}
+\entry{清华大学}{中国北京}{地球系统科学系，大气科学博士生}{2024年9月 -- \mbox{至今}}
 \begin{itemize}
   \item 导师：黄小猛教授。
-  \item 研究方向：地球系统科学人工智能、可微海洋建模、神经网络--物理融合预测。
+  \item 研究方向：物理动力系统的机器学习、可微数值求解器，以及物理与学习融合模型。
 \end{itemize}
 
 \entry{中国海洋大学}{中国青岛}{崇本学院，海洋科学（物理海洋学）理学学士}{2020年9月 -- 2024年6月}
@@ -104,75 +88,109 @@
 \end{itemize}
 
 \section*{研究经历}
-\entry{上海科学智能研究院}{中国上海}{研究实习生}{2025年11月 -- 至今}
+\entry{上海科学智能研究院}{中国上海}{研究实习生}{2025年11月 -- \mbox{至今}}
 \begin{itemize}
   \item 围绕复杂地球系统和海洋动力过程，开展 AI for Science 与神经网络--物理融合建模研究。
 \end{itemize}
 
-\entry{清华大学}{中国北京}{地球系统科学系，博士研究生}{2024年9月 -- 至今}
+\entry{清华大学}{中国北京}{地球系统科学系，博士研究生}{2024年9月 -- \mbox{至今}}
 \begin{itemize}
   \item 研究融合物理约束、可微数值模式和数据驱动预测的机器学习方法。
   \item 构建面向长期模拟、海洋热浪预测和资料同化的海洋/大气混合模型。
+  \item 开发 \href{https://neural-pom.vercel.app/}{Neural-POM}，将完整可微的海洋数值模式与机器学习相结合。
 \end{itemize}
 
+\clearpage
+\section*{荣誉与奖励}
+\begingroup\fontsize{9.3}{11.3}\selectfont\hyphenpenalty=10000\exhyphenpenalty=10000
+\renewcommand{\arraystretch}{1.08}
+\begin{tabularx}{\textwidth}{@{}p{2.65cm}@{\hspace{0.4cm}}X@{}}
+2026 & \textbf{国家奖学金}，中华人民共和国教育部\\
+2026 & \textbf{清华大学综合奖学金}，清华大学\\
+2026 & \textbf{入选中国科协青年科技人才培育工程博士生专项计划（青培）}，中国科学技术协会\\
+2023 & \textbf{全国二等奖}，中国大学生数学竞赛\\
+2022 & \textbf{国家奖学金}，中华人民共和国教育部\\
+2022 & \textbf{一等奖}，全国大学生数学建模竞赛\\
+2019 & \textbf{银牌}，中国数学奥林匹克\\
+\end{tabularx}
+\endgroup
+
 \section*{学术论文}
-\small
-\begin{enumerate}[label={[\arabic*]},leftmargin=1.8em]
+\begin{enumerate}[label={\sffamily\color{muted}\footnotesize\arabic*.}]
   \pubentry
-    {HybridOM: Hybrid Physics-Based and Data-Driven Global Ocean Modeling with Efficient Spatial Downscaling [ICML 2026, CCF-A]}
+    {HybridOM: Hybrid Physics-Based and Data-Driven Global Ocean Modeling with Efficient Spatial Downscaling}
     {\textbf{Ruiqi Shu}, Xiaohui Zhong, Qiusheng Huang, Ruijian Gou, Tianrun Gao, Hao Li, Xiaomeng Huang}
     {被 ICML 2026（CCF-A）录用，2026}
     {\role{第一作者}}
     {\href{https://arxiv.org/abs/2602.00598}{arXiv}}
 
+
+
   \pubentry
-    {NeuralOM: Neural Ocean Model for Subseasonal-to-Seasonal Simulation [AAAI 2026, CCF-A]}
+    {NeuralOM: Neural Ocean Model for Subseasonal-to-Seasonal Simulation}
     {Yuan Gao, Hao Wu, Fan Xu, Yanfei Xiang, Ruijian Gou, \textbf{Ruiqi Shu}, Qingsong Wen, Xian Wu, Kun Wang, Xiaomeng Huang}
     {发表于 AAAI 2026（CCF-A），pp. 14756--14764，2026}
     {\role{共同作者}}
     {\href{https://dblp.org/rec/conf/aaai/GaoWXXGSWWWH26}{DBLP}; \href{https://arxiv.org/abs/2505.21020}{arXiv}; \href{https://github.com/YuanGao-YG/NeuralOM}{Code}}
 
+
+
   \pubentry
-    {An Exterior-Embedding Neural Operator Framework for Preserving Conservation Laws [KDD 2026 Research Track, CCF-A]}
+    {An Exterior-Embedding Neural Operator Framework for Preserving Conservation Laws}
     {Huanshuo Dong, Hong Wang, Hao Wu, Zhiwei Zhuang, Xuanze Yang, \textbf{Ruiqi Shu}, Yuan Gao, Xiaomeng Huang}
     {被 KDD 2026 Research Track（CCF-A）录用，2026}
     {\role{共同作者}}
     {\href{https://arxiv.org/abs/2511.16573}{arXiv}}
 
+
+
   \pubentry
-    {Ocean-E2E: Hybrid Physics-Based and Data-Driven Global Forecasting of Extreme Marine Heatwaves with End-to-End Neural Assimilation [KDD 2026 AI4Sciences Track, CCF-A]}
+    {Ocean-E2E: Hybrid Physics-Based and Data-Driven Global Forecasting of Extreme Marine Heatwaves with End-to-End Neural Assimilation}
     {\textbf{Ruiqi Shu}, Yuan Gao, Hao Wu, Ruijian Gou, Kun Wang, Yanfei Xiang, Fan Xu, Qingsong Wen, Xiaomeng Huang}
     {被 KDD 2026 AI4Sciences Track（CCF-A）录用并选为口头报告（top 6.1\%），2026}
     {\role{第一作者}}
     {\href{https://arxiv.org/abs/2505.22071}{arXiv}}
 
+
+
   \pubentry
-    {OneForecast: A Universal Framework for Global and Regional Weather Forecasting [ICML 2025, CCF-A]}
+    {OneForecast: A Universal Framework for Global and Regional Weather Forecasting}
     {Yuan Gao, Hao Wu, \textbf{Ruiqi Shu}, Huanshuo Dong, Fan Xu, Rui Ray Chen, Yibo Yan, Qingsong Wen, Xuming Hu, Kun Wang, Jiahao Wu, Qing Li, Hui Xiong, Xiaomeng Huang}
     {发表于 ICML 2025（CCF-A），PMLR 267:18658--18697，2025}
     {\role{共同第一作者}}
     {\href{https://proceedings.mlr.press/v267/gao25r.html}{PMLR}; \href{https://openreview.net/forum?id=9xGSeVolcN}{OpenReview}; \href{https://arxiv.org/abs/2502.00338}{arXiv}; \href{https://github.com/YuanGao-YG/OneForecast}{Code}}
 
+
+
   \pubentry
-    {Advanced Forecasts of Global Extreme Marine Heatwaves Through a Physics-Guided Data-Driven Approach [ERL 2025]}
+    {Advanced Forecasts of Global Extreme Marine Heatwaves Through a Physics-Guided Data-Driven Approach}
     {\textbf{Ruiqi Shu}, Hao Wu, Yuan Gao, Fanghua Xu, Ruijian Gou, Wei Xiong, Xiaomeng Huang}
     {Environmental Research Letters, 20(4), 044030, 2025}
     {\role{第一作者}}
     {\href{https://doi.org/10.1088/1748-9326/adbddd}{DOI}; \href{https://arxiv.org/abs/2412.15532}{arXiv}}
 
+
+
   \pubentry
-    {Impact of Downwelling-Favorable Winds on Eddy Formation in the West Greenland Current [JPO 2025]}
+    {Impact of Downwelling-Favorable Winds on Eddy Formation in the West Greenland Current}
     {\textbf{Ruiqi Shu}, Ruijian Gou, Clark Pennelly, Yaocheng Deng, Lixin Wu, Ke Xiao, Yitian Huang, Paul G. Myers}
     {Journal of Physical Oceanography, 55(2), 191--201, 2025}
     {\role{第一作者}}
     {\href{https://doi.org/10.1175/JPO-D-24-0053.1}{DOI}}
 
+
+\end{enumerate}
+
+\clearpage
+\section*{学术论文（续）}
+\begin{enumerate}[resume,label={\sffamily\color{muted}\footnotesize\arabic*.}]
   \pubentry
     {Advancing Ocean State Estimation with Efficient and Scalable AI}
     {Yanfei Xiang, Yuan Gao, Hao Wu, Quan Zhang, \textbf{Ruiqi Shu}, Xiao Zhou, Xian Wu, Xiaomeng Huang}
     {arXiv preprint arXiv:2511.06041, 2025}
     {\role{共同作者}}
     {\href{https://arxiv.org/abs/2511.06041}{arXiv}}
+
 
   \pubentry
     {Cracking the Code of Arctic Sea Ice: Why Models Fail to Predict Its Retreat?}
@@ -181,12 +199,16 @@
     {\role{共同作者}}
     {\href{https://arxiv.org/abs/2511.04961}{arXiv}}
 
+
+
   \pubentry
     {Advanced Long-Term Earth System Forecasting by Learning the Small-Scale Nature}
     {Hao Wu, Yuan Gao, \textbf{Ruiqi Shu}, Kun Wang, Ruijian Gou, Chuhan Wu, Xinliang Liu, Juncai He, Shuhao Cao, Junfeng Fang, Xingjian Shi, Feng Tao, Qi Song, Shengxuan Ji, Yanfei Xiang, Yuze Sun, Jiahao Li, Fan Xu, Huanshuo Dong, Haixin Wang, Fan Zhang, Penghao Zhao, Xian Wu, Qingsong Wen, Deliang Chen, Xiaomeng Huang}
     {arXiv preprint arXiv:2505.19432, 2025}
     {\role{共同第一作者}}
     {\href{https://arxiv.org/abs/2505.19432}{arXiv}}
+
+
 
   \pubentry
     {Turb-L1: Achieving Long-Term Turbulence Tracing by Tackling Spectral Bias}
@@ -195,6 +217,8 @@
     {\role{共同第一作者}}
     {\href{https://arxiv.org/abs/2505.19038}{arXiv}}
 
+
+
   \pubentry
     {BeamVQ: Beam Search with Vector Quantization to Mitigate Data Scarcity in Physical Spatiotemporal Forecasting}
     {Weiyan Wang, Xingjian Shi, \textbf{Ruiqi Shu}, Yuan Gao, Rui Ray Chen, Kun Wang, Fan Xu, Jinbao Xue, Shuaipeng Li, Yangyu Tao, Di Wang, Hao Wu, Xiaomeng Huang}
@@ -202,7 +226,6 @@
     {\role{共同作者}}
     {\href{https://arxiv.org/abs/2502.18925}{arXiv}}
 \end{enumerate}
-\normalsize
 
 \section*{学术报告}
 \entry{KDD 2026 AI4Sciences Track}{韩国济州}{口头报告，“Ocean-E2E: Hybrid Physics-Based and Data-Driven Global Forecasting of Extreme Marine Heatwaves with End-to-End Neural Assimilation”}{2026年8月}
@@ -213,21 +236,11 @@
 
 \entry{美国地球物理联合会（AGU）2024年秋季会议}{美国华盛顿特区}{会议报告，“A Scale-Aware Framework for Regional to Global Marine Heatwaves Forecast”}{2024年12月}
 
-\section*{荣誉与奖励}
-\begin{tabularx}{\textwidth}{@{}p{2.8cm}X@{}}
-2022 & \textbf{国家奖学金}，中华人民共和国教育部\\
-2023 & \textbf{全国二等奖}，中国大学生数学竞赛\\
-2022 & \textbf{一等奖}，全国大学生数学建模竞赛\\
-2019 & \textbf{银牌}，中国数学奥林匹克\\
-\end{tabularx}
-
 \section*{学术服务}
-\begin{tabularx}{\textwidth}{@{}p{3.2cm}X@{}}
-审稿人 & ICLR, KDD, ICML\\
-研究方向 & AI4Science; AI4PDE; 地球物理流体动力学; 地球系统科学人工智能\\
+\begingroup\sffamily\fontsize{9}{12}\selectfont
+\begin{tabularx}{\textwidth}{@{}p{2.65cm}@{\hspace{0.4cm}}X@{}}
+审稿人 & ICLR, KDD, ICML, AAAI\\
+研究方向 & 物理世界建模；动力系统；可微数值求解器；物理与学习融合模型\\
 \end{tabularx}
-
-\vfill
-{\footnotesize\color{textgray} 最后更新：2026年8月。}
-
+\endgroup
 \end{document}

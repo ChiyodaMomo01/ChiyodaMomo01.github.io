@@ -14,7 +14,7 @@ export type TimelineItem = {
 export const profile = {
   name: "Ruiqi Shu",
   chineseName: "舒睿骐",
-  title: "PhD Candidate, AI for Earth System Science",
+  title: "PhD Candidate, Machine Learning for the Physical World",
   affiliation: "Department of Earth System Science, Tsinghua University",
   location: "Beijing, China",
   email: "srq24@mails.tsinghua.edu.cn",
@@ -80,6 +80,25 @@ export const news: NewsItem[] = [
 
 export const awards: TimelineItem[] = [
   {
+    date: "2026",
+    title: "National Scholarship",
+    place: "Ministry of Education of the PRC",
+    detail: "National-level scholarship awarded in China.",
+  },
+  {
+    date: "2026",
+    title: "Comprehensive Scholarship",
+    place: "Tsinghua University",
+    detail: "University scholarship.",
+  },
+  {
+    date: "2026",
+    title: "CAST Young Science and Technology Talent Development Program",
+    place: "China Association for Science and Technology (CAST)",
+    detail:
+      "Selected for the Doctoral Student Track (中国科协青年科技人才培育工程博士生专项计划，青培).",
+  },
+  {
     date: "2022",
     title: "National Scholarship",
     place: "Ministry of Education of the PRC",
@@ -110,19 +129,22 @@ export const experience: TimelineItem[] = [
     date: "Nov 2025 - Present",
     title: "Research Intern",
     place: "Shanghai Academy of AI for Science",
-    detail: "Research internship on AI for Science and neural-physics modeling.",
+    detail:
+      "Research internship on AI for Science and neural-physics modeling.",
   },
   {
     date: "Sep 2024 - Present",
     title: "PhD Candidate in Atmospheric Science",
     place: "Department of Earth System Science, Tsinghua University",
-    detail: "Supervised by Xiaomeng Huang; focused on AI for Earth system science.",
+    detail:
+      "Supervised by Xiaomeng Huang; studying machine learning, physical dynamical systems, and differentiable numerical solvers.",
   },
   {
     date: "Sep 2020 - Jun 2024",
     title: "BSc in Marine Science (Oceanography)",
     place: "Chongben Honors College, Ocean University of China",
-    detail: "Undergraduate training in oceanography and geophysical fluid dynamics.",
+    detail:
+      "Undergraduate training in oceanography and geophysical fluid dynamics.",
   },
 ];
 
@@ -152,13 +174,19 @@ export const presentations: TimelineItem[] = [
     date: "Dec 2024",
     title: "AGU 2024 Fall Meeting · Conference Presentation",
     place: "Washington, D.C., United States",
-    detail: "Presented A Scale-Aware Framework for Regional to Global Marine Heatwaves Forecast.",
+    detail:
+      "Presented A Scale-Aware Framework for Regional to Global Marine Heatwaves Forecast.",
   },
 ];
 
 export const services = {
-  reviewer: ["ICLR", "KDD", "ICML"],
-  areas: ["AI4Science", "AI4PDE", "Geophysical Fluid Dynamics", "AI for Earth System Science"],
+  reviewer: ["ICLR", "KDD", "ICML", "AAAI"],
+  areas: [
+    "Physical World Modeling",
+    "Dynamical Systems",
+    "Differentiable Numerical Solvers",
+    "Hybrid Physics-Learning Models",
+  ],
 };
 
 export const miscellaneous = {

@@ -6,10 +6,13 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
+    "build:cv": "bash cv/build.sh",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource-variable/dm-sans": "^5.3.0",
+    "@fontsource-variable/source-serif-4": "^5.3.0",
     "@vitejs/plugin-react": "^5.1.1",
     "katex": "^0.17.0",
     "lucide-react": "^0.556.0",

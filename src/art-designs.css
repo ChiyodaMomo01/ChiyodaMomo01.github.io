@@ -1,0 +1,153 @@
+/* Final homepage: Inside the Painting, in the Clay palette. */
+:root[data-art="cover"] .academic-layout {
+  max-width: 1376px;
+  gap: clamp(50px, 6vw, 96px);
+  padding-top: 64px;
+}
+.art-source-note {
+  margin: 0 0 32px;
+  max-width: 670px;
+  color: var(--muted);
+  font: 11px/1.7 var(--sans);
+}
+.art-source-note a {
+  text-decoration: underline;
+}
+
+.art-cover {
+  position: relative;
+  isolation: isolate;
+  height: min(75.5vw, 92svh);
+  min-height: 560px;
+  max-height: 960px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  color: #fff9e9;
+  background: #28231e;
+}
+.art-cover-image {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Keep the clock tower and distant figures when a wide screen crops the foreground. */
+  object-position: 50% 8%;
+}
+.art-cover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    90deg,
+    rgb(34 26 20 / 0.74),
+    rgb(34 26 20 / 0.08) 72%,
+    transparent
+  );
+}
+.art-cover-content {
+  width: 100%;
+  max-width: 1376px;
+  margin: 0 auto;
+  padding: 72px clamp(28px, 5vw, 80px) 104px;
+}
+.art-cover-kicker {
+  font: 11px/1.5 var(--sans);
+  letter-spacing: 0.18em;
+  margin-bottom: 22px;
+}
+.art-cover-name {
+  font-size: clamp(64px, 7vw, 104px);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+}
+.art-cover-name span {
+  display: block;
+  font-size: 24px;
+  margin: 20px 0 28px;
+  letter-spacing: 0.12em;
+}
+.art-cover-role {
+  font: 14px/1.6 var(--sans);
+}
+.art-cover-enter {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 44px;
+  margin-top: 38px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgb(255 249 233 / 0.5);
+  font: 14px/1.6 var(--sans);
+}
+.art-cover-enter:hover {
+  border-color: #fff9e9;
+}
+.art-cover-credit {
+  position: absolute;
+  bottom: 20px;
+  right: 32px;
+  left: 32px;
+  text-align: right;
+  font: 11px/1.7 var(--sans);
+  text-shadow: 0 1px 5px rgb(0 0 0 / 0.6);
+}
+.art-cover-credit svg {
+  vertical-align: middle;
+}
+
+@media (max-width: 767px) {
+  :root[data-art="cover"] .academic-layout {
+    padding-top: 36px;
+    gap: 0;
+  }
+  .art-cover {
+    height: 90svh;
+    min-height: 600px;
+    max-height: 820px;
+  }
+  /* The right-hand vista retains the clock tower, sunlit passage and tiny figures. */
+  .art-cover-image {
+    object-position: 92% 50%;
+  }
+  .art-cover::before {
+    background: linear-gradient(
+      180deg,
+      rgb(34 26 20 / 0.04) 15%,
+      rgb(34 26 20 / 0.45) 52%,
+      rgb(34 26 20 / 0.9) 100%
+    );
+  }
+  .art-cover-content {
+    padding: 64px 28px 100px;
+  }
+  .art-cover-name {
+    font-size: clamp(52px, 12vw, 68px);
+  }
+  .art-cover-kicker {
+    font-size: 10px;
+    letter-spacing: 0.13em;
+  }
+  .art-cover-name span {
+    margin: 17px 0 24px;
+    font-size: 22px;
+  }
+  .art-cover-enter {
+    margin-top: 28px;
+  }
+  .art-cover-credit {
+    text-align: left;
+    left: 28px;
+    right: 28px;
+    font-size: 10px;
+  }
+}
+@media print {
+  .art-cover,
+  .art-source-note {
+    display: none;
+  }
+}
