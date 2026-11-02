@@ -4,6 +4,7 @@ import { publications } from "../data/publications";
 import { profile } from "../data/profile";
 
 const selectedTitles = [
+  "New Wine in an Old Bottle: NeuralPOM:",
   "HybridOM:",
   "Ocean-E2E:",
   "OneForecast:",
@@ -39,7 +40,7 @@ export function PublicationList() {
       aria-labelledby="publications-heading"
     >
       <div className="section-heading">
-        <h2 id="publications-heading">Publications</h2>
+        <h2 id="publications-heading">Publications &amp; Preprints</h2>
         <a className="section-link" href={profile.scholar}>
           Google Scholar <ArrowUpRight size={15} aria-hidden="true" />
         </a>
@@ -48,7 +49,7 @@ export function PublicationList() {
         <div
           className="scope-toggle"
           role="group"
-          aria-label="Publication selection"
+          aria-label="Publication and preprint selection"
         >
           <button
             type="button"
@@ -66,7 +67,7 @@ export function PublicationList() {
           </button>
         </div>
         <label className="year-filter">
-          <span className="sr-only">Filter publications by year</span>
+          <span className="sr-only">Filter publications and preprints by year</span>
           <select
             value={year}
             onChange={(event) => setYear(event.target.value)}
@@ -78,7 +79,7 @@ export function PublicationList() {
         </label>
       </div>
       <p className="sr-only" role="status">
-        Showing {papers.length} publications.
+        Showing {papers.length} publications and preprints.
       </p>
       <div className="publication-list">
         {papers.map((paper) => (
@@ -132,7 +133,7 @@ export function PublicationList() {
       </div>
       {papers.length === 0 && (
         <p className="empty-state">
-          No publications in this selection. Choose another year or view all
+          No publications or preprints in this selection. Choose another year or view all
           papers.
         </p>
       )}

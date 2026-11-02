@@ -32,7 +32,7 @@ export const navItems = [
   ["About", "about"],
   ["Blog", "blog"],
   ["News", "news"],
-  ["Publications", "publications"],
+  ["Publications & Preprints", "publications"],
   ["Presentations", "presentations"],
   ["Awards", "awards"],
   ["Experience", "experience"],
