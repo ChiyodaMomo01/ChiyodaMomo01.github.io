@@ -38,7 +38,7 @@ Edit `cv/ruiqi_shu_cv.tex` and `cv/ruiqi_shu_cv_zh.tex`, then run `npm run build
 
 The CV design shares the homepage's warm paper color, Source Serif 4, DM Sans, brown links, and date column. The print fonts in `cv/fonts/` come from the same Fontsource packages as the website; their SIL Open Font License files are included. Both CVs retain all twelve publication records and use complete records on each page.
 
-Publications default to four selected papers; visitors can view all twelve and filter by year. Existing section anchors and blog article URLs are preserved.
+Publications & Preprints defaults to a selection of papers, including NeuralPOM; visitors can view the full list and filter by year. Existing section anchors and blog article URLs are preserved.
 
 ## Build
 
