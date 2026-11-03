@@ -14,12 +14,13 @@ export const publications: Publication[] = [
   {
     title: "New Wine in an Old Bottle: NeuralPOM: A Hybrid Ocean Forecast Model with Differentiable Dynamics and Staged Learning",
     authors: "Ruiqi Shu, Guangliang Liu, Ruijian Gou, Tianrun Gao, Haomin Wen, Hao Li, Xiaomeng Huang",
-    venue: "Preprint",
+    venue: "arXiv preprint arXiv:2611.02460",
     date: "2026",
     role: "Co-first author",
     summary: "A hybrid ocean forecast model that couples differentiable Princeton Ocean Model dynamics with conservation-constrained neural corrections through three stages of training.",
     links: [
-      { label: "Paper", url: "https://github.com/ChiyodaMomo01/NeuralPOM/blob/main/paper/NeuralPOM.pdf" },
+      { label: "arXiv", url: "https://arxiv.org/abs/2611.02460" },
+      { label: "PDF", url: "https://arxiv.org/pdf/2611.02460" },
       { label: "GitHub", url: "https://github.com/ChiyodaMomo01/NeuralPOM" },
     ],
     image: "/images/publications/neuralpom.png",
