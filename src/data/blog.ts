@@ -1,20 +1,8 @@
-export type BlogLanguage = "zh" | "en";
+import type { BlogPost } from "./blogTypes";
+import { oceanHybridThinking2 } from "./posts/oceanHybridThinking2";
+import { oceanHybridThinking3 } from "./posts/oceanHybridThinking3";
 
-export type BlogBlock =
-  | { type: "paragraph"; text: string }
-  | { type: "heading"; text: string }
-  | { type: "equation"; text: string }
-  | { type: "references"; items: string[] }
-  | { type: "slides"; basePath: string; count: number };
-
-export type BlogPost = {
-  slug: string;
-  date: string;
-  readTime: string;
-  title: Record<BlogLanguage, string>;
-  dek: Record<BlogLanguage, string>;
-  content: Record<BlogLanguage, BlogBlock[]>;
-};
+export type { BlogLanguage, BlogBlock, BlogPost } from "./blogTypes";
 
 const references = [
   "Sonnewald, M., Lguensat, R., Jones, D. C., Dueben, P. D., Brajard, J., and Balaji, V. Bridging observations, theory and numerical simulation of the ocean using machine learning. Environmental Research Letters, 2021. https://doi.org/10.1088/1748-9326/ac0eb0",
@@ -33,6 +21,8 @@ const references = [
 ];
 
 export const blogPosts: BlogPost[] = [
+  oceanHybridThinking3,
+  oceanHybridThinking2,
   {
     slug: "ocean-hybrid-ai-thinking-1",
     date: "June 1, 2026",

@@ -857,6 +857,83 @@ button:active,
 .inline-math {
   font-size: 0.9em;
 }
+.blog-prose a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-color: var(--line);
+  text-underline-offset: 3px;
+}
+.blog-prose a:hover {
+  text-decoration-color: currentColor;
+}
+.blog-figure,
+.blog-table-block {
+  margin: 34px 0;
+  min-width: 0;
+}
+.blog-figure > a {
+  display: block;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  overflow: hidden;
+  background: #fff;
+}
+.blog-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.blog-figure figcaption,
+.blog-table-block figcaption {
+  margin-top: 14px;
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--secondary);
+}
+.blog-table-scroll {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  scrollbar-color: var(--muted) var(--bg);
+}
+.blog-table-scroll:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+.blog-data-table {
+  width: 100%;
+  min-width: 680px;
+  border-collapse: collapse;
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.65;
+  font-variant-numeric: tabular-nums;
+}
+.blog-data-table th,
+.blog-data-table td {
+  padding: 11px 12px;
+  text-align: right;
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+.blog-data-table thead th {
+  background: color-mix(in srgb, var(--accent) 6%, var(--bg));
+  color: var(--secondary);
+  font-weight: 500;
+}
+.blog-data-table tbody th {
+  text-align: left;
+  font-weight: 400;
+}
+.blog-data-table tr:last-child > * {
+  border-bottom: 0;
+}
+.blog-data-table .highlighted-row {
+  background: color-mix(in srgb, #78a58d 14%, var(--bg));
+}
+.blog-data-table .inline-math {
+  font-size: 1em;
+}
 .citation button {
   font-family: var(--sans);
   font-size: 11px;

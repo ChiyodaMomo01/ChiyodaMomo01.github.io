@@ -14,13 +14,17 @@ Open **http://127.0.0.1:5173/**. The preview updates automatically when source f
 ## Content and layout
 
 - `src/data/profile.ts`: personal details, publication records, news, experience, presentations, awards, and service.
-- `src/data/blog.ts`: bilingual article content, references, formulas, and slides.
-- `src/data/blogIndex.ts`: lightweight blog metadata used on the homepage. Keep its title, date, slug, and description aligned with `blog.ts` when adding or editing articles.
+- `src/data/blog.ts`: article registry and the first bilingual note, including references, formulas, and slides.
+- `src/data/posts/`: full Chinese and English content for the later notes, including figure captions and numerical tables.
+- `src/data/blogIndex.ts`: shared lightweight metadata for the blog and homepage previews.
+- `src/data/blogTypes.ts`: supported article blocks, including equations, figures, tables, references, and slides.
 - `src/components/`: profile sidebar, homepage, publication filters, and the separately loaded bilingual blog.
 - `src/styles.css`: typography, colors, responsive layouts, print styling, and focus states.
 - `public/images/` and `public/files/`: original photographs, publication figures, and English/Chinese CV PDFs.
 
 Chinese text uses the system's Kai typeface (`Kaiti SC`, `STKaiti`, or `KaiTi`). The CVs embed the Kai font so that their appearance is preserved when opened on another computer.
+
+The three-part **Some Thoughts on Hybrid Physics-AI Ocean and Atmosphere Models** series is available at `#blog/ocean-hybrid-ai-thinking-1`, `-2`, and `-3`, with Chinese/English switching. Parts 2 and 3 retain the original technical body, equations, numerical tables, eight figures, and reference lists; their opening work-promotion cards are omitted. Figure assets are served locally from `public/images/blog/`. Wide tables and equations scroll independently on small screens, and figure links open the original image. These later notes display the source month, November 2026, without inventing an exact publication day.
 
 ## Final appearance
 

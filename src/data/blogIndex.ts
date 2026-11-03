@@ -1,4 +1,36 @@
-export const blogIndex = [
+import type { BlogPostMetadata } from "./blogTypes";
+
+export const thinking2Metadata: BlogPostMetadata = {
+  slug: "ocean-hybrid-ai-thinking-2",
+  date: "November 2026",
+  readTime: "18 min read",
+  title: {
+    zh: "关于混合物理-AI海洋/大气模型的一些思考（2）",
+    en: "Some Thoughts on Hybrid Physics-AI Ocean and Atmosphere Models (2)",
+  },
+  dek: {
+    zh: "从三维可微海洋动力框架与守恒状态更新，到百日全状态预报和波数谱诊断。",
+    en: "From three-dimensional differentiable ocean dynamics and conservative state updates to 100-day full-state forecasts and spectral diagnostics.",
+  },
+};
+
+export const thinking3Metadata: BlogPostMetadata = {
+  slug: "ocean-hybrid-ai-thinking-3",
+  date: "November 2026",
+  readTime: "18 min read",
+  title: {
+    zh: "关于混合物理-AI海洋/大气模型的一些思考（3）",
+    en: "Some Thoughts on Hybrid Physics-AI Ocean and Atmosphere Models (3)",
+  },
+  dek: {
+    zh: "分阶段在线训练、跨求解器梯度，以及高频耦合中温盐—斜压反馈与密度法向阻尼。",
+    en: "Staged online training, gradients through the solver, and tracer–baroclinic feedback with density-normal damping under hourly coupling.",
+  },
+};
+
+export const blogIndex: BlogPostMetadata[] = [
+  thinking3Metadata,
+  thinking2Metadata,
   {
     slug: "ocean-hybrid-ai-thinking-1",
     date: "June 1, 2026",
